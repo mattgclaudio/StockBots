@@ -1,2 +1,2 @@
 # rabbitMQMerged
-This is a merged repository consisting of all necesarry files needed for the rabbitmq project. This repo is for IT490 RabbitMQ Project, Gallium Group.
+Code for database VM, only involved in authentication so dbServer just sets up a rabbitmq server listener and waits for an auth request through the rabbitvm server. should not process anything after that.
