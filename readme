@@ -1,0 +1,18 @@
+
+ 10/19/20 
+ 
+ apache2.conf goes in /etc/apache2/
+stockTracker.conf is linked in etc/apache2/sites-enabled/ from its spot in sites-available
+
+get_host_info.inc, host.ini, local.ini, path.inc, rabbitMqlib.inc, ServerClient.php, and rabbit.ini all go in a directory
+for reaching out to the rabbitmqServer with user requests. it is referred to in login.php as a require once line early on. 
+
+login.php, index.html, stylesheet all go in /var/www/html/[directory consistent with config files] 
+
+
+
+10/20/20
+12:24
+I was having trouble running queries to the dmz after logging in, even though i thought i wrote a control statement correctly, when i ran a separate form the authentication
+process would try to run again and throw an error on the database server. So right now the buttons available to query the dmz are on the login.php page but
+pressing them sends the user to action.php. now that im writing this im kindve thinking i know what may be wrong so i might cut this off now. 
