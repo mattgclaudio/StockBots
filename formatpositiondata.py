@@ -18,9 +18,10 @@ assets = (tempconn.list_positions())
 
 def posdata(pos):
     sret = ""
-    sret += ("Symbol:  " + pos.__getattr__('symbol') +
-             "\nQuantity:  " + pos.__getattr__('qty')
-             + "\nAsset Class:  " + pos.__getattr__('asset_class'))
+    sret += (("Symbol:  " + pos.__getattr__('symbol')) + 
+    ("\nQuantity:  " + pos.__getattr__('qty')) + 
+    ("\nAsset Class:  " + pos.__getattr__('asset_class')))
+    
     return sret
 
 
@@ -29,6 +30,9 @@ def getallpos(allpos):
     for k in range(len(allpos)):
         retarr[k] = posdata(allpos[k])
     return retarr
+
+print(getallpos(assets))
+
 
 # order = tcon.submit_order(symbol="AAPL",
 #                                  qty=20,

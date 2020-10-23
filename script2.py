@@ -15,6 +15,30 @@ keytwo = sys.argv[2]
 tempconn = tradeapi.REST(keyone, keytwo, url, api_version='v2')
 assets = (tempconn.list_positions())
 
+def posdata(pos):
+    sret = ""
+    sret += (("Symbol:  " + pos.__getattr__('symbol')) +
+    ("\nQuantity:  " + pos.__getattr__('qty')) +
+    ("\nAsset Class:  " + pos.__getattr__('asset_class')))
+
+    return sret
+
+
+def getallpos(allpos):
+    retarr = {}
+    for k in range(len(allpos)):
+        retarr[k] = posdata(allpos[k])
+    return retarr
+
+
+print(getallpos(assets))
+
+
+
+
+
+
+
 
 print(assets)
 
