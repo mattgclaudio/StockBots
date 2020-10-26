@@ -60,6 +60,8 @@ function requestProcessor($request)
 
 		break;
 
+	case "bot":
+		$op = base64_encode(file_get_contents('test_plot.png'));
 	
 	default:
 		$emsg = "no valid action for user account given";
