@@ -11,6 +11,7 @@ require('/home/matt00/Downloads/git/allWeb/ServerClient.php');
 $p = $_POST;
 
 if (isset($p['uname'])) {
+	
 	$un = $p['uname'];
 	$pw = $p['pword'];
 
@@ -18,22 +19,9 @@ if (isset($p['uname'])) {
 
 	$_SESSION['pubkey'] = $lucky['pubkey'];
 	$_SESSION['privkey'] = $lucky['privkey'];
+	
 	$header = $lucky['msg'];
 }
-
-
-
-
-/**
-if (isset($p['chkcash'])) {
-	$displayBar = "BARRRR";
-	$header = "Logged In";
-}
-**/
-
-
-
-# call function in the RabbitCLIENT file which passes the data to Rabbit to be # passed to the DB etc.
 
 
 
