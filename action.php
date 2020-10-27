@@ -3,7 +3,7 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-require('/home/matt00/Downloads/git/allWeb/ServerClient.php');
+require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
 
 
 
@@ -57,63 +57,68 @@ if (isset($post['bot'])) {
 
 ?>
 
-
-
-
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
-<title> YahooFin Portal </title>
+<meta charset="utf-8">
 
-<link rel="stylesheet" href="stylesheet0.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<title> YahooFin Portal </title>
 
 </head>
 
 
 <body>
 
-<h1> 
-<?php echo $header; ?>
-</h1>
+	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white"> 
+		<?php echo $header; ?>
+	</div>
 
+	 <div class="container-fluid p-3 m-6 border">
+	
+		<form method="post" action="">
+		<input type="hidden" name="chkcash">
+		<button type="submit"> Check Cash Balance </button>
+		</form>
 
-<!--
- Need to make this top text box larger for the error message, probably best to do it in CSS
+		<form method="post" action="">
+		<input type="hidden" name="pos">
+		<button type="submit"> Get Active Positions </button>
+		</form>
 
-these were for testing
-<input type="text" value=""> 
-<input type="text" value="">
--->
+		<form method="post" action="">
+		<input type="hidden" name="order">
+		<input name="sym">
+		<input name="num" type="number">
+		<button type="submit"> Place Order </button>
+		</form>
 
-<form method="post" action="">
-<input type="hidden" name="chkcash">
-<button type="submit"> Check Cash Balance </button>
-</form>
+		<form method="post" action="">
+		<input type="hidden" name="bot">
+		<button type="submit"> Bot Graph </button>
+		</form>
 
-<form method="post" action="">
-<input type="hidden" name="pos">
-<button type="submit"> Get Active Positions </button>
-</form>
+		<input type="text" value="<?php echo $displaybar; ?>">
 
-<form method="post" action="">
-<input type="hidden" name="order">
-<input name="sym">
-<input name="num" type="number">
-<button type="submit"> Place Order </button>
-</form>
+	</div>
 
-<form method="post" action="">
-<input type="hidden" name="bot">
-<button type="submit"> Bot Graph </button>
-</form>
-
-<input type="text" value="<?php echo $displaybar; ?>">
-
-<p> Please peruse our vast array of financial information at your leisure.</p>
-
-<img src="<?php echo $pic; ?>">
+	<img src="http://192.168.1.177/photoHost/test_plot.png" class="float-left">
 
 
 
