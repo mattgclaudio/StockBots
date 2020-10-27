@@ -24,7 +24,9 @@ if (isset($post['chkcash'])) {
 
 if (isset($post['pos'])) {
 	
-	$ret = getpos($pk, $prk);
+	$retstr = getpos($pk, $prk);
+	
+	$positions = preg_split(" /,/", $retstr);
 	
 	$displaybar = $ret['message'];
 	$header = "Active Positions";
@@ -115,6 +117,11 @@ if (isset($post['bot'])) {
 		</form>
 
 		<input type="text" value="<?php echo $displaybar; ?>">
+		 
+		 <div class="jumbotron-fluid p-3 my-3"> 
+			<?php foreach ($positions as $j) echo "$j \n"; ?>
+		</div>
+		 
 
 	</div>
 
