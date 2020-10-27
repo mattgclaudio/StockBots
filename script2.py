@@ -1,49 +1,39 @@
+
+
 #!/usr/bin/python3
 
 import alpaca_trade_api as tradeapi
 import sys
 
-key = "PKOWHBTVHXBZXFDOY8YU"
-sec = "sNoRCTp9cK6Y8k4jerXijbPeY15S3MkxcKE4sHGt"
+# key = "PKOWHBTVHXBZXFDOY8YU"
+# sec = "sNoRCTp9cK6Y8k4jerXijbPeY15S3MkxcKE4sHGt"
 url = "https://paper-api.alpaca.markets"
 
 # Deliverable 1. Keep track of portfolio positions for user.
 
-keyone = sys.argv[1]
-keytwo = sys.argv[2]
 
-tempconn = tradeapi.REST(keyone, keytwo, url, api_version='v2')
-assets = (tempconn.list_positions())
-
-def posdata(pos):
-    sret = ""
-    sret += (("Symbol:  " + pos.__getattr__('symbol')) +
-    ("\nQuantity:  " + pos.__getattr__('qty')) +
-    ("\nAsset Class:  " + pos.__getattr__('asset_class')))
-
-    return sret
+temp_conn = tradeapi.REST(sys.argv[1], sys.argv[2], url, api_version='v2')
+assets = (temp_conn.list_positions())
 
 
-def getallpos(allpos):
-    retarr = {}
-    for k in range(len(allpos)):
-        retarr[k] = posdata(allpos[k])
-    return retarr
+def pos_data(pos):
+    stock = {
+        "Symbol": pos.__getattr__('symbol'),
+        "Quantity": pos.__getattr__('qty'),
+        "Asset Class": pos.__getattr__('asset_class')
+
+    }
+    return stock
 
 
-print(getallpos(assets))
+def get_all_pos(all_positions):
+    all_stocks = set()
+
+    for k in range(len(all_positions)):
+        all_stocks.add(pos_data(all_positions[k]).get("Symbol") + "   "
+                       + pos_data(all_positions[k]).get("Quantity") + "  "
+                       + pos_data(all_positions[k]).get("Asset Class"))
+    return all_stocks
 
 
-
-
-
-
-
-
-print(assets)
-
-# order = tcon.submit_order(symbol="AAPL",
-#                                  qty=20,
-#                                  side="buy",
-#                                  type="market",
-#                                  time_in_force="gtc")
+print(get_all_pos(assets))
