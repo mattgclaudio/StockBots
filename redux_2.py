@@ -9,6 +9,7 @@ from keras.layers import Dense, LSTM
 from datetime import date
 import csv
 import math
+import sys
 
 scl = MinMaxScaler()
 
@@ -52,21 +53,21 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    machina = Sequential()
-    machina.add(LSTM(units=50, return_sequences=True))
-    machina.add(LSTM(units=50, return_sequences=False))
-    machina.add(Dense(units=25))
-    machina.add(Dense(units=1))
+#     machina = Sequential()
+#     machina.add(LSTM(units=50, return_sequences=True))
+#     machina.add(LSTM(units=50, return_sequences=False))
+#     machina.add(Dense(units=25))
+#     machina.add(Dense(units=1))
 
     # load trained model
-    # machina = keras.models.load_model('/home/matt/PycharmProjects/Tensorflow/')
+    machina = keras.models.load_model('saved_model.pb')
 
     machina.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
     machina.fit(x_train, y_train, batch_size=1, epochs=1)
 
     # save the weights of the neurons after the model trains
-    machina.save('/home/matt/PycharmProjects/Tensorflow/', overwrite=True, include_optimizer=True)
+    machina.save()
 
     testset = scaled_set[trainlength - 60:, :]
 
@@ -109,4 +110,4 @@ def predict_price(s_date, e_date, ticker: str):
 # print(len(closing_set))
 # print((len(closing_set) * .8))
 
-predict_price("2012-1-1", "2020-10-20", "MTRN")
+predict_price(sys.argv[1], sys.argv[2], sys.argv[3])
