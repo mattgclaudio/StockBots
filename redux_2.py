@@ -101,13 +101,7 @@ def predict_price(s_date, e_date, ticker: str):
     plt.plot(t['close'])
     plt.plot(v[['close', 'Predictions']])
     plt.legend(['Train', 'Valid', 'Predictions'])
-    plt.savefig('/home/matt/Desktop/test_plot.png')
+    plt.savefig('test_plot.png')
 
-
-# a_data = get_data("MTRN", start_date="2020-1-1", end_date=date.today()).filter(['close'])
-# # Numpy Array, no dates!
-# closing_set = a_data.values
-# print(len(closing_set))
-# print((len(closing_set) * .8))
 
 predict_price(sys.argv[1], sys.argv[2], sys.argv[3])
