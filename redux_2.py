@@ -105,11 +105,15 @@ def predict_price(s_date, e_date, ticker: str):
     fig_time = now.strftime("%H:%M:%S")
     plt.savefig(fig_time)
 
-data = pd.read_csv("just_tickers.csv", header=0)
-data = data.values.tolist()
+
+# data = pd.read_csv("just_tickers.csv", header=0)
+# data = data.values.tolist()
+
+data = ['AAPL', 'MTRN', 'QLCM', 'TSLA', 'NVDA', 'F', 'GE']
+
 for k in data:
     try:
-        predict_price("2012-1-1", "2020-10-25", k[0])
+        predict_price("2012-1-1", "2020-10-25", k)
     except IndexError:
         pass
     except AssertionError:
