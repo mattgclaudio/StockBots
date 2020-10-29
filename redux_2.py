@@ -101,7 +101,7 @@ def predict_price(s_date, e_date, ticker: str):
     plt.plot(t['close'])
     plt.plot(v[['close', 'Predictions']])
     plt.legend(['Train', 'Valid', 'Predictions'])
-    plt.savefig('test_plot.png')
+    plt.savefig('test_plot0.png')
 
 
 predict_price(sys.argv[1], sys.argv[2], sys.argv[3])
