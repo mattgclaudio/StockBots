@@ -13,4 +13,4 @@ This is definitely a bit addicting though, the model trains in about 8 seconds w
 
 TODO:
 
-Make python list with a bunch of major stock tickers, have redux_2.py run on all of them to speed up training....im entering each ticker in by hand right now...like an idiot.
+Make python list with a bunch of major stock tickers, have redux_2.py run on all of them to speed up training....im entering each ticker in by hand right now...embarassing. 
