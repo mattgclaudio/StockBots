@@ -7,4 +7,10 @@ for using their GPU's to speed up ML training. So...that's what I did.
 These files here are the result of me running a tensorflow:gpu Docker container on my local machine, the VM's can't access the hardware directly to make use of
 the driver capabilities. right now the redux_2.py script holds a function to predict the stock with 60 days prior of data, and is passed the starting date, ending date, and 
 ticker symbol as CLI parameters, saves a graph file with the datetime as its file name and updates the model's weights so in theory 
-it will be getting better as i train it on all the major stocks.
+it will be getting better as i train it on all the major stocks
+
+This is definitely a bit addicting though, the model trains in about 8 seconds with just my RTX 1050ti, aka the cheapest way to get CUDA cores, and it whoops my 12 core CPU which does it in about 48 seconds. 
+
+TODO:
+
+Make python list with a bunch of major stock tickers, have redux_2.py run on all of them to speed up training....im entering each ticker in by hand right now...like an idiot.
