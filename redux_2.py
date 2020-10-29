@@ -3,13 +3,20 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-from tensorflow import keras
+import tensorflow as tf
+from tensorflow import *
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
 from datetime import date, datetime
 import csv
 import math
 import sys
+from keras.backend import *
+
+
+# config = tf.compat.v1.ConfigProto()
+# config.gpu_options.allow_growth = True
+
 
 scl = MinMaxScaler()
 
@@ -21,6 +28,11 @@ pd.options.display.width = 0
 
 #  user must input dates as year-month-day
 def predict_price(s_date, e_date, ticker: str):
+   
+    config = tf.compat.v1.ConfigProto()
+    config.gpu_options.allow_growth = True
+
+
     all_data = get_data(ticker, start_date=s_date, end_date=e_date).filter(['close'])
 
     # Numpy Array, no dates!
@@ -33,9 +45,9 @@ def predict_price(s_date, e_date, ticker: str):
 
     trainset = scaled_set[0:trainlength, :]
 
-    # create training arrays to "fit" the model x train has the data being used to train/fit the model, y_train has the
-    # actual result we are looking for, in this case x train has closing costs for 60 days and y_train has the closing
-    # cost for the day following the last trading day in x_train x_train holds values i-60:i, y_train has closing cost
+    # create training arrays to "fit" the model x train has the data being used to train/fit the model,    # y_train has the
+    # actual result we are looking for, in this case x train has closing costs for 60 days and y_train     # has the closing
+    # cost for the day following the last trading day in x_train x_train holds values i-60:i, y_train h    # as closing cost
     # indexed i. First array is ending exclusive i-1.
 
     x_train = []
@@ -53,14 +65,15 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    # machina = Sequential()
-    #  machina.add(LSTM(units=50, return_sequences=True))
-    #  machina.add(LSTM(units=50, return_sequences=False))
-    #  machina.add(Dense(units=25))
-    #  machina.add(Dense(units=1))
+    machina = Sequential()
+    machina.add(LSTM(units=50, return_sequences=True))
+    machina.add(LSTM(units=50, return_sequences=False))
+    machina.add(Dense(units=25))
+    machina.add(Dense(units=1))
 
     # load trained model
-    machina = keras.models.load_model('semi_trained_model')
+    tf.keras.backend.clear_session()
+    #  machina = keras.models.load_model('semi_trained_model')
 
     machina.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
