@@ -19,3 +19,7 @@ Make python list with a bunch of major stock tickers, have redux_2.py run on all
 added in a csv file just filled wsith stock ticker symbols to train with, turns out automating it...was not that hard.
 function in redux_2.py is called on all the tickers in the csv, imported in the file and turned into a list
 tickers are run throuygh the function ina  try except block that excepts Index (not enough entries), Assertion(dont remember what was throwing this but down it goes), and Key(no closing costs?) errors...just to keep things moving along. I dont have an eternity to debug every but of stock data after all. 
+
+just kidding, this isnt doing jack shit. 
+
+will debug...
