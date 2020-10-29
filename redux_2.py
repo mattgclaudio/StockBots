@@ -6,7 +6,7 @@ import numpy as np
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from datetime import date
+from datetime import date, datetime
 import csv
 import math
 import sys
@@ -53,14 +53,14 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    machina = Sequential()
-    machina.add(LSTM(units=50, return_sequences=True))
-    machina.add(LSTM(units=50, return_sequences=False))
-    machina.add(Dense(units=25))
-    machina.add(Dense(units=1))
+    # machina = Sequential()
+    #  machina.add(LSTM(units=50, return_sequences=True))
+    #  machina.add(LSTM(units=50, return_sequences=False))
+    #  machina.add(Dense(units=25))
+    #  machina.add(Dense(units=1))
 
     # load trained model
-    # machina = keras.models.load_model('/rabbitMQMerged/trainModel/saved_model.pb')
+    machina = keras.models.load_model('semi_trained_model')
 
     machina.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
@@ -101,7 +101,9 @@ def predict_price(s_date, e_date, ticker: str):
     plt.plot(t['close'])
     plt.plot(v[['close', 'Predictions']])
     plt.legend(['Train', 'Valid', 'Predictions'])
-    plt.savefig('test_plot0.png')
+    now = datetime.now()
+    fig_time = now.strftime("%H:%M:%S")
+    plt.savefig(fig_time)
 
 
 predict_price(sys.argv[1], sys.argv[2], sys.argv[3])
