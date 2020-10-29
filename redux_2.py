@@ -112,3 +112,7 @@ for k in data:
         predict_price("2012-1-1", "2020-10-25", k[0])
     except IndexError:
         pass
+    except AssertionError:
+        pass
+    except KeyError:
+        pass
