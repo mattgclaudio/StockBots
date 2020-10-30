@@ -24,14 +24,15 @@ just kidding, this isnt doing jack shit.
 
 will debug...
 
+__commit thank you stackoverflow__:
 switched graphics cards and then spent a fun day debugging horrible tensorflow errors
 
-there are 2 lines at the beginning of final_bot_1 that fixed the NUMA problem...
+there are 2 lines at the beginning of final_bot_1.py that fixed that problem...
 
 still having trouble running the huge set of stocks because so many of them dont return any useable data and im not yet sure how to just SKIP them entirely
 without messing things up. probably not a complicated fix but im focusing on what WORKS at the moment.
 
-To that end, I can iterate over a manually coded python list of stocks (which i know ill get years worth of data for) plugging each one into the model to test it, 
-which if you can imagine is a lot freaking quicker even including the time to manually type the stock symbols in. I figure i can use the same list for all of them, so its worth it....?
+To that end, I can iterate over a manually coded python list of stocks (which i know ill get years worth of data for) plugging each one into the model to test it
+which saves a lot of time even if hard coding the list is slow vs sorting the 2000 row csv file. just_Tickers.csv
 
-anyway the model *seems* to get quite a bit better with training, it pulls 8 years of closing costs for each symbol and the tiny current list is 15 symbols, 
+anyway the model *seems* to get quite a bit better with training, it pulls 8 years of closing costs for each symbol and this commit ran 15 symbols, their graphs were uploaded sequentially (the names have the timestamp). as you can see the predictions get near dead on in some of the later ones. Still not putting my money into it though.
