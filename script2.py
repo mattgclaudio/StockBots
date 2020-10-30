@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/python3
 
 import alpaca_trade_api as tradeapi

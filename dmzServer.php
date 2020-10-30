@@ -22,9 +22,11 @@ function requestProcessor($request)
 		# this was my hacky way of getting php to pass the variables
 	# correctly when its moved to a shell command (python)
 	case "cash": 
-		$start = '/home/matt/git/DMZ/fDMZ/script1.py ';
+		
+		$start = '/home/matt/git/rabbitMQMerged/script1.py ';
 		
 		$start .= $pubkey . ' ' . $privkey;
+		
 		# this line will escape the string we just made and execute 
 		# the command in a host shell.
 		$op = shell_exec(escapeshellcmd($start));
@@ -32,7 +34,8 @@ function requestProcessor($request)
 		break;
 
 	case "pos":
-		$start = '/home/matt/git/DMZ/fDMZ/script2.py ';
+		
+		$start = '/home/matt/git/rabbitMQMerged/script2.py ';
 		
 		$start .= $pubkey . ' ' . $privkey;
 		
@@ -41,19 +44,25 @@ function requestProcessor($request)
 		break;
 	
 	case "order":
+		
 		# get the stock ticker symbol and number to purchase 
 		# from request array
+		
 		$sym = $request['sym'];
 		$num = $request['num'];
 
 		# start shell command
-		$str = '/home/matt/git/DMZ/fDMZ/script5.py ';
+		$str = '/home/matt/git/rabbitMQMerged/script5.py ';
+		
 		# add all arguments
 		$str .= $pubkey . ' ' . $privkey . ' ' . $sym . ' ' . $num;
+		
 		# escape and execute the command, store results in shellres
 		# for this command if it runs fine there should be no 
 		# output
+		
 		$shellres = shell_exec(escapeshellcmd($str));
+		
 		# if there is no output, say as much, else return the error
 		# this is a ternary operator FYI
 		$op = empty($shellres) ? "Order placed" : $shellres;
@@ -61,7 +70,21 @@ function requestProcessor($request)
 		break;
 
 	case "bot":
-		$op = base64_encode(file_get_contents('test_plot.png'));
+
+		$botsym = $request['botsym'];
+		
+		# start shell command
+                $str = '/home/matt/git/rabbitMQMerged/final_bot_1.py ';
+		
+		# add symbol name
+		$str .= $botsym;
+
+		$shellres = shell_exec(escapeshellcmd($str));
+
+		$op = 'Here is the prediction chart for ' . $botsym;
+
+		break;
+
 	
 	default:
 		$emsg = "no valid action for user account given";
