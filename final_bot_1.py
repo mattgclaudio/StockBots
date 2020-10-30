@@ -125,7 +125,7 @@ def predict_price(s_date, e_date, ticker: str):
 # for la in range(len(csv_data)):
 #     ticker_strings.append(csv_data[la][0])
 
-data = ['T', 'VLO', 'UNH', 'MCK', 'COST', 'HPQ', 'KR', 'JPM', 'ESRX', 'BAC', 'IBM', 'MPC', 'CAH', 'BA', 'C','AMZN', 'WFC', 'MSFT', 'PG', 'HD', 'ADM', 'WAG', 'TGT', 'JNJ', 'ANTM']
+data = ['PG', 'HD', 'ADM', 'WAG', 'MET', 'STFGX', 'FMCC', 'CMCSA', 'PEP', 'UTX', 'AIG', 'UPS', 'DOW', 'AET', 'LOW', 'COP', 'INTC', 'ETE','CAT', 'PRU', 'PFE', 'DIS', 'HUM']
 
 
 for k in data:
