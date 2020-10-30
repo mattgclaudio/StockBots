@@ -23,7 +23,7 @@ function requestProcessor($request)
 	# correctly when its moved to a shell command (python)
 	case "cash": 
 		
-		$start = '/home/matt/git/rabbitMQMerged/script1.py ';
+		$start = '/home/matt/git/rabbitMQMerged/scripts/script1.py ';
 		
 		$start .= $pubkey . ' ' . $privkey;
 		
@@ -35,7 +35,7 @@ function requestProcessor($request)
 
 	case "pos":
 		
-		$start = '/home/matt/git/rabbitMQMerged/script2.py ';
+		$start = '/home/matt/git/rabbitMQMerged/scripts/script2.py ';
 		
 		$start .= $pubkey . ' ' . $privkey;
 		
@@ -52,7 +52,7 @@ function requestProcessor($request)
 		$num = $request['num'];
 
 		# start shell command
-		$str = '/home/matt/git/rabbitMQMerged/script5.py ';
+		$str = '/home/matt/git/rabbitMQMerged/scripts/script5.py ';
 		
 		# add all arguments
 		$str .= $pubkey . ' ' . $privkey . ' ' . $sym . ' ' . $num;
@@ -73,19 +73,27 @@ function requestProcessor($request)
 
 		$botsym = $request['botsym'];
 		
-		# start shell command
-                $str = '/home/matt/git/rabbitMQMerged/final_bot_1.py ';
+                $str = '/home/matt/git/rabbitMQMerged/dmz_bot_1.py ';
 		
 		# add symbol name
 		$str .= $botsym;
-
+		
 		$shellres = shell_exec(escapeshellcmd($str));
+		if (!$shellres) {
 
-		$op = 'Here is the prediction chart for ' . $botsym;
+		$op = 'Error, no data found for that stock symbol';
+		break;
+		
+		}
 
+		else {
+		$op = "Here is the prediction chart for " . $botsym;
 		break;
 
-	
+		}
+
+		
+
 	default:
 		$emsg = "no valid action for user account given";
 		$op = "error in processing";
@@ -97,7 +105,7 @@ function requestProcessor($request)
   return array('message' => $op);
 }
 
-$server = new rabbitMQServer("dmzServer.ini","dmzServer");
+$server = new rabbitMQServer("alpaca.ini","dmzServer");
 
 echo "DMZ Server BEGIN".PHP_EOL;
 $server->process_requests('requestProcessor');
