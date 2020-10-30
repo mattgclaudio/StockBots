@@ -63,14 +63,14 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    close_model = Sequential()
-    close_model.add(LSTM(units=50, return_sequences=True))
-    close_model.add(LSTM(units=50, return_sequences=False))
-    close_model.add(Dense(units=25))
-    close_model.add(Dense(units=1))
+    # close_model = Sequential()
+    # close_model.add(LSTM(units=50, return_sequences=True))
+    # close_model.add(LSTM(units=50, return_sequences=False))
+    # close_model.add(Dense(units=25))
+    # close_model.add(Dense(units=1))
 
     # load trained model
-    # close_model = keras.models.load_model('model_29')
+    close_model = keras.models.load_model('model_29')
 
     close_model.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
@@ -125,7 +125,7 @@ def predict_price(s_date, e_date, ticker: str):
 # for la in range(len(csv_data)):
 #     ticker_strings.append(csv_data[la][0])
 
-data = ['AAPL', 'MTRN', 'QLCM', 'TSLA', 'NVDA', 'F', 'GE', 'WMT', 'CVX', 'GM', 'PSX', 'CVS', 'VZ', 'FNMA', 'ABC']
+data = ['T', 'VLO', 'UNH', 'MCK', 'COST', 'HPQ', 'KR', 'JPM', 'ESRX', 'BAC', 'IBM', 'MPC', 'CAH', 'BA', 'C','AMZN', 'WFC', 'MSFT', 'PG', 'HD', 'ADM', 'WAG', 'TGT', 'JNJ', 'ANTM']
 
 
 for k in data:
