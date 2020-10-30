@@ -23,3 +23,15 @@ tickers are run throuygh the function ina  try except block that excepts Index (
 just kidding, this isnt doing jack shit. 
 
 will debug...
+
+switched graphics cards and then spent a fun day debugging horrible tensorflow errors
+
+there are 2 lines at the beginning of final_bot_1 that fixed the NUMA problem...
+
+still having trouble running the huge set of stocks because so many of them dont return any useable data and im not yet sure how to just SKIP them entirely
+without messing things up. probably not a complicated fix but im focusing on what WORKS at the moment.
+
+To that end, I can iterate over a manually coded python list of stocks (which i know ill get years worth of data for) plugging each one into the model to test it, 
+which if you can imagine is a lot freaking quicker even including the time to manually type the stock symbols in. I figure i can use the same list for all of them, so its worth it....?
+
+anyway the model *seems* to get quite a bit better with training, it pulls 8 years of closing costs for each symbol and the tiny current list is 15 symbols, 
