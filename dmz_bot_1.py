@@ -113,7 +113,7 @@ def predict_price(s_date, e_date, ticker: str):
     now = datetime.now()
     fig_time = now.strftime("%H:%M:%S") + "  " + ticker + "  Graph"
     # save the graph to the publically viewable web directory 
-    plt.savefig("/var/www/html/photoHost/" + ticker)
+    plt.savefig("/var/www/html/photoHost/test_plot.png")
 
 
 print(predict_price("2012-1-1", date.today(), sys.argv[1]))
