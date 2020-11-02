@@ -14,6 +14,7 @@ $pk = $_SESSION['pubkey'];
 $prk = $_SESSION['privkey'];
 
 
+$header = "Welcome to Your Action Page";
 
 if (isset($post['chkcash'])) {
 	$ret = getcash($pk, $prk);
@@ -85,38 +86,73 @@ if (isset($post['bot'])) {
 
 <body>
 
+
 	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white"> 
 		<?php echo $header; ?>
 	</div>
 
-	 <div class="container-fluid p-3 m-6 border">
 
-		 <input type="text" size="100" value="<?php if (!empty($cash)) { echo $cash; } ?>">
+
+	 <div class="container-fluid p-3 my-2 border">
+		
+		<label>Get Cash Balance </label>
+		
+		 <input type="text" size="100"placeholder="Your Cash Balance will appear here" value="<?php if (!empty($cash)) { echo $cash; } ?>">
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="chkcash">
-		<button type="submit"> Check Cash Balance </button>
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
 		
+	</div>
 
-		<input type="text" size="100" value="<?php if (!empty($posarr)) { foreach ($posarr as $k) {echo $k;} } ?>">
+	<div class="container-fluid p-3 my-2 border">
+		<label> See Current Positions </label>
+		
+		<input type="text" id="pos" placeholder="Your active positions will appear here." size="100" value="<?php if (!empty($posarr)) { foreach ($posarr as $k) {echo $k;} } ?>">
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="pos">
-		<button type="submit"> Get Active Positions </button>
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
 		
+	 </div>
 
+	<div class="container-fluid p-3 my-2 border">
+
+		<label>  Enter stock symbol all caps, quantity </label>
 
 		<form method="post" action="">
+		
 		<input type="hidden" name="order">
-		<input name="sym">
+		
+		<input name="sym" placeholder="Symbol, All Caps">
+		
 		<input name="num" type="number">
-		<button type="submit"> Place Order </button> 
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
 
+	 </div>
+
+	<div class="container-fluid p-3 my-2 border">
+		<label>  See predictive graph for stock prices.</label>
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="bot">
-		<input type="text" name="botsym">
+		
+		<input type="text" name="botsym" placeholder="Stock Symbol">
+		
 		<button type="submit"> Bot Graph </button> 
+		
 		</form>
 
 
