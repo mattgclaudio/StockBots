@@ -73,15 +73,16 @@ function putorder($p, $r, $symbol, $number) {
 
 }
 
-function callBot() {
+function callBot($p, $s, $symbol) {
 
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
 
         $req = array();
-        $req['pubkey'] = $p;
-        $req['privkey'] = $r;
 	$req['type'] = "dmz";
 	$req['action'] = "bot";
+	$req['botsym'] = $symbol;
+        $req['pubkey'] = $p;
+        $req['privkey'] = $s;
 
         return $client->send_request($req);
 

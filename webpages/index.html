@@ -1,41 +1,49 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
-<title> YahooFin Portal </title>
+<meta charset="utf-8">
 
-<link rel="stylesheet" href="stylesheet0.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<title> YahooFin Portal </title>
 
 </head>
 
 <body>
-<h1>Login Page</h1>
-
-
+	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white">
+		
+		<h1>Login Page</h1>
 	
-<div id="textResponse">
-awaiting response
-</div>
+	</div>
+	
+	<div class="container-fluid p-3 m-3 border">
+		
+		<form method="post" action="login.php">
 
-<form method="post" action="login.php">
+			<label>Username:</label>
+			<input name="uname"></input>
+			<br>
+			<label> Password:</label>
+			<input name="pword" id="pword" type="password"></input>
+			<br>
+			<input type="submit">
+		</form>
+	</div>
 
-<label>Username:</label>
-<input name="uname"></input>
-<br>
-
-
-<label> Password:</label>
-<input name="pword" id="pword" type="password"></input>
-<br>
-
-<input type="submit">
-</form>
-
-
-<!--
-<script>
-SendLoginRequest("kehoed","12345");
-</script>
--->
 </body>
 </html>

@@ -3,7 +3,7 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-require('/home/matt00/Downloads/git/allWeb/ServerClient.php');
+require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
 
 
 
@@ -17,16 +17,17 @@ $prk = $_SESSION['privkey'];
 
 if (isset($post['chkcash'])) {
 	$ret = getcash($pk, $prk);
-	$displaybar = $ret['message'];
+	$cash = $ret['message'];
 	$header = "Cash Balance";
 }
 
 
 if (isset($post['pos'])) {
 	
-	$ret = getpos($pk, $prk);
+	$retstr = getpos($pk, $prk);
 	
-	$displaybar = $ret['message'];
+	$posarr = preg_split("/,/", $retstr['message']);
+
 	$header = "Active Positions";
 
 }
@@ -38,8 +39,7 @@ if (isset($post['order'])) {
 
 	$ret = putorder($pk, $prk, $s, $n);
 
-	$displaybar = $ret['message'];
-	$header = "Order Placed";
+	$header = $ret['message'];
 }
 
 
@@ -47,73 +47,82 @@ if (isset($post['order'])) {
 
 if (isset($post['bot'])) {
 
-        $ret5 = callBot();
-	$pic = base64_decode($ret5['message']);
-        $displaybar = "Bot Performance";
-	$header = "Bot has run data";
+        $msg = callBot($pk, $prk, $post['botsym']);
+	$picurl = "192.168.1.179/photoHost/test_plot.png";
+	$header = $msg['message'];
 
 }
 
 
 ?>
 
-
-
-
-
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
-<title> YahooFin Portal </title>
+<meta charset="utf-8">
 
-<link rel="stylesheet" href="stylesheet0.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+<title> YahooFin Portal </title>
 
 </head>
 
 
 <body>
 
-<h1> 
-<?php echo $header; ?>
-</h1>
+	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white"> 
+		<?php echo $header; ?>
+	</div>
+
+	 <div class="container-fluid p-3 m-6 border">
+
+		 <input type="text" size="100" value="<?php if (!empty($cash)) { echo $cash; } ?>">
+		<form method="post" action="">
+		<input type="hidden" name="chkcash">
+		<button type="submit"> Check Cash Balance </button>
+		</form>
+		
+
+		<input type="text" size="100" value="<?php if (!empty($posarr)) { foreach ($posarr as $k) {echo $k;} } ?>">
+		<form method="post" action="">
+		<input type="hidden" name="pos">
+		<button type="submit"> Get Active Positions </button>
+		</form>
+		
 
 
-<!--
- Need to make this top text box larger for the error message, probably best to do it in CSS
+		<form method="post" action="">
+		<input type="hidden" name="order">
+		<input name="sym">
+		<input name="num" type="number">
+		<button type="submit"> Place Order </button> 
+		</form>
 
-these were for testing
-<input type="text" value=""> 
-<input type="text" value="">
--->
+		<form method="post" action="">
+		<input type="hidden" name="bot">
+		<input type="text" name="botsym">
+		<button type="submit"> Bot Graph </button> 
+		</form>
 
-<form method="post" action="">
-<input type="hidden" name="chkcash">
-<button type="submit"> Check Cash Balance </button>
-</form>
 
-<form method="post" action="">
-<input type="hidden" name="pos">
-<button type="submit"> Get Active Positions </button>
-</form>
+	</div>
 
-<form method="post" action="">
-<input type="hidden" name="order">
-<input name="sym">
-<input name="num" type="number">
-<button type="submit"> Place Order </button>
-</form>
-
-<form method="post" action="">
-<input type="hidden" name="bot">
-<button type="submit"> Bot Graph </button>
-</form>
-
-<input type="text" value="<?php echo $displaybar; ?>">
-
-<p> Please peruse our vast array of financial information at your leisure.</p>
-
-<img src="<?php echo $pic; ?>">
+	<img src="<?php echo $picurl; ?>" class="float-left">
 
 
 
