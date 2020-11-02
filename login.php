@@ -3,7 +3,7 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-require('/home/matt00/Downloads/git/allWeb/ServerClient.php');
+require('/home/sam/git/webserverVM/rabbitMQMerged/ServerClient.php');
 
 
 
