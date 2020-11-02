@@ -17,3 +17,7 @@ unifiedServer.php is just changed to reflect using the loginScript.php, which ha
 10/20
 
 Right now the RabbitMQ Broker VM Works with switchingserver.php, dmzServer.ini, dbServer.ini, webconn.ini, as well as the usual host path .inc etc files for the rabbit server to run. This coordinates messages between all 3 of the VM's Rabbit being the 4th. 
+
+11/1
+
+No code updates, just want to state that the Rabbit Server VM's code, i.e switchingserver.php, just does the job of forwarding and returning the messages sent from one VM to another based on their requests['type'] var. 
