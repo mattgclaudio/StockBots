@@ -22,6 +22,9 @@ function dologin($a, $b) {
 
 }
 
+#these next two functions could probably be combined, but i have been working
+#and testing incrementally so this is where i'm at rn.
+
 function getcash ($p1, $p2) {
 
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
@@ -36,4 +39,53 @@ function getcash ($p1, $p2) {
 }
 
 
+function getpos($p1, $p2) {
+
+	$client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['pubkey'] = $p1;
+        $req['privkey'] = $p2;
+        $req['action'] = "pos";
+
+        return $client->send_request($req);
+
+}
+
+
+
+function putorder($p, $r, $symbol, $number) {
+
+	$client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['pubkey'] = $p;
+	$req['privkey'] = $r;
+	$req['sym'] = $symbol;
+	$req['num'] = $number;
+        $req['action'] = "order";
+
+        return $client->send_request($req);
+
+
+
+}
+
+function callBot($p, $s, $symbol) {
+
+	$client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+	$req['type'] = "dmz";
+	$req['action'] = "bot";
+	$req['botsym'] = $symbol;
+        $req['pubkey'] = $p;
+        $req['privkey'] = $s;
+
+        return $client->send_request($req);
+
+
+}
 

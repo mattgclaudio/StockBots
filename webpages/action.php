@@ -3,11 +3,7 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-<<<<<<< HEAD
-require('/home/sam/git/webserverVM/rabbitMQMerged/ServerClient.php');
-=======
 require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
->>>>>>> a5959c18fac39b1343a3ef3617f6b51af23868ca
 
 
 
@@ -18,10 +14,11 @@ $pk = $_SESSION['pubkey'];
 $prk = $_SESSION['privkey'];
 
 
+$header = "Welcome to Your Action Page";
 
 if (isset($post['chkcash'])) {
 	$ret = getcash($pk, $prk);
-	$displaybar = $ret['message'];
+	$cash = $ret['message'];
 	$header = "Cash Balance";
 }
 
@@ -30,9 +27,8 @@ if (isset($post['pos'])) {
 	
 	$retstr = getpos($pk, $prk);
 	
-	$positions = preg_split(" /,/", $retstr);
-	
-	$displaybar = $ret['message'];
+	$posarr = preg_split("/,/", $retstr['message']);
+
 	$header = "Active Positions";
 
 }
@@ -44,8 +40,7 @@ if (isset($post['order'])) {
 
 	$ret = putorder($pk, $prk, $s, $n);
 
-	$displaybar = $ret['message'];
-	$header = "Order Placed";
+	$header = $ret['message'];
 }
 
 
@@ -53,10 +48,9 @@ if (isset($post['order'])) {
 
 if (isset($post['bot'])) {
 
-        $ret5 = callBot();
-	$pic = base64_decode($ret5['message']);
-        $displaybar = "Bot Performance";
-	$header = "Bot has run data";
+        $msg = callBot($pk, $prk, $post['botsym']);
+	$picurl = "192.168.1.179/photoHost/test_plot.png";
+	$header = $msg['message'];
 
 }
 
@@ -92,44 +86,79 @@ if (isset($post['bot'])) {
 
 <body>
 
+
 	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white"> 
 		<?php echo $header; ?>
 	</div>
 
-	 <div class="container-fluid p-3 m-6 border">
-	
+
+
+	 <div class="container-fluid p-3 my-2 border">
+		
+		<label>Get Cash Balance </label>
+		
+		 <input type="text" size="100"placeholder="Your Cash Balance will appear here" value="<?php if (!empty($cash)) { echo $cash; } ?>">
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="chkcash">
-		<button type="submit"> Check Cash Balance </button>
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
+		
+	</div>
 
+	<div class="container-fluid p-3 my-2 border">
+		<label> See Current Positions </label>
+		
+		<input type="text" id="pos" placeholder="Your active positions will appear here." size="100" value="<?php if (!empty($posarr)) { foreach ($posarr as $k) {echo $k;} } ?>">
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="pos">
-		<button type="submit"> Get Active Positions </button>
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
+		
+	 </div>
+
+	<div class="container-fluid p-3 my-2 border">
+
+		<label>  Enter stock symbol all caps, quantity </label>
 
 		<form method="post" action="">
+		
 		<input type="hidden" name="order">
-		<input name="sym">
+		
+		<input name="sym" placeholder="Symbol, All Caps">
+		
 		<input name="num" type="number">
-		<button type="submit"> Place Order </button>
+		
+		<button type="submit"> Submit </button>
+		
 		</form>
 
+	 </div>
+
+	<div class="container-fluid p-3 my-2 border">
+		<label>  See predictive graph for stock prices.</label>
+		
 		<form method="post" action="">
+		
 		<input type="hidden" name="bot">
-		<button type="submit"> Bot Graph </button>
+		
+		<input type="text" name="botsym" placeholder="Stock Symbol">
+		
+		<button type="submit"> Bot Graph </button> 
+		
 		</form>
 
-		<input type="text" value="<?php echo $displaybar; ?>">
-		 
-		 <div class="jumbotron-fluid p-3 my-3"> 
-			<?php foreach ($positions as $j) echo "$j \n"; ?>
-		</div>
-		 
 
 	</div>
 
-	<img src="http://192.168.1.177/photoHost/test_plot.png" class="float-left">
+	<img src="<?php echo $picurl; ?>" class="float-left">
 
 
 
