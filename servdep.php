@@ -24,7 +24,7 @@ function indexWebPackage($version)
 
 				    }
 
-    if ($retrow = $mysqli->query("INSERT INTO packages.versions
+    if ($mysqli->query("INSERT INTO packages.versions
 	    (PackageLocation) values ('/home/matt/git/packages/webPackage$version.tar.gz')")) 
 		{
 	  
@@ -39,8 +39,29 @@ function indexWebPackage($version)
     }
 	return $ret;
 
-	}
+	} # end indexwebPackage
 
+
+function sendVersions() {
+	$mysqli = new mysqli('localhost', 'matt', 'toor', 'packages');
+
+        if ($mysqli->connect_errno) {
+
+            $ret['errmsg'] = "Error from DB: 
+                    failed to connect to Deployment DB " . date("H:i:s");
+            return; }     # FIX  updateLog($ret0 . date("H:i:s"));
+                                    
+	$sql = "select SubmitDate, PackageLocation from packages.versions";
+	if ($retrows = $mysqli -> query($sql)){
+		$versArr = array();
+		$count = 0;
+		
+		while ($row = $retrows -> fetch_row()) {
+			$versArr[$count] = [$row[0], $row[1]];
+			$count++; }
+		return $versArr; }
+	
+} # end sendVersions
 	    
 
 
@@ -65,16 +86,15 @@ function requestProcessor($request)
     case "index":
 	
 	    $stash =  indexwebpackage($request['version']);
+	    return array('messages' => $stash);
  	    break;	    
 
-   case "pull":
-   	# fill
-	break;	   
+   case "versions":
+	   $vIndex = sendVersions();
+	   return array('versions' => $vIndex);
+	   break;	   
   }
 
-
-
-  return array('messages' => $stash);
 }
 
 $server = new rabbitMQServer("Deployment.ini","deploymentServer");
