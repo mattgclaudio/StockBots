@@ -3,7 +3,13 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
+<<<<<<< HEAD
+require('/home/sam/git/webserverVM/rabbitMQMerged/ServerClient.php');
+
+
+=======
 require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
+>>>>>>> a5959c18fac39b1343a3ef3617f6b51af23868ca
 
 # Var for what post returned
 $p = $_POST;
