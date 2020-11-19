@@ -3,7 +3,7 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
-function getUpdate() {
+function versionList() {
 
 	$client = new rabbitMQClient("Deployment.ini","deploymentServer");
 
@@ -15,6 +15,8 @@ function getUpdate() {
 	print_r($retObj['versions']);
 }
 
-getUpdate();
+
+versionList();
+
 
 
