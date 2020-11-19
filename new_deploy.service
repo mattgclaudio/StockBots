@@ -1,0 +1,10 @@
+[Unit]
+Description= Deployment Listener 
+
+[Service]
+ExecStart=/home/sam/git/rabbitMQMerged/servdep.php
+ExecReload=/home/sam/git/rabbitMQMerged/servdep.php reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=on-failure
+RestartSec=15
+PIDFile=/run/deploy.pid
