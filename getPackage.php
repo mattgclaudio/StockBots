@@ -2,9 +2,8 @@
 
 function getPackage($id) {
 	
-	$ent = 'scp sam@10.192.226.24:/home/sam/git/packages/webPackage'
-		.$id
-		.'.tar.gz /home/matt00/git/packages';
+	$ent = 'scp matt@192.168.1.183:/home/matt/git/packages/' .
+		$id .'.tar.gz /home/matt00/git/packages';
 	shell_exec(escapeshellcmd($ent));
 
 }
