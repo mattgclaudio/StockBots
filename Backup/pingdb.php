@@ -20,9 +20,10 @@ function pingdb() {
 	    # call the script to send the latest db clone 
 	    $ship = '/home/matt/git/UserDatabase/Backup/shiptable.sh';
 	    shell_exec(escapeshellcmd($ship));
+	    return false;
    			 } # end connection failed
 
-    else { 
+    else 	{ 
 	    # call the script to run mysqldump and overwrite the previous dump
 	    $save = '/home/matt/git/UserDatabase/Backup/dump.sh';
 	    shell_exec(escapeshellcmd($save));
@@ -36,9 +37,15 @@ function pingdb() {
 	    #close file
 	    fclose($dcl);
 	    #  comment out on production
-	    echo "User DB Running". PHP_EOL;
-    } # end successful connection 
-} # end pingdb()
+	    # echo "User DB Running". PHP_EOL;
+	    return true;
+   
+   		 } # end successful connection 
+	} # end pingdb()
 
+	do {
+		$turn = pingdb();
+		sleep(5);
+	  }
+	while($turn);
 
-pingdb();
