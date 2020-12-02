@@ -9,7 +9,7 @@ require_once('rabbitMQLib.inc');
 function updateLog($errmsg) {
 	# with this a+ opening mode we APPEND to this existing logbook
 	$newentry = fopen("/home/matt/logbook.txt", "a+");
-	fwrite($newentry, $errmsg);
+	fwrite($newentry, $errmsg ."/n");
 	fclose($newentry);
 
 }
@@ -26,7 +26,7 @@ function chkcreds($userone, $passone)
     $mysqli = new mysqli('localhost', 'testdb', 'data', 'vault');
 
     if ($mysqli->connect_errno) {
-	    $ret0 = "Error from DB: failed to connect to DB      ";
+	    $ret0 = "Error from DB: failed to connect to DB ";
 	    $ret0 .= date("H:i:s");
 	    $ret0 .= "\n";
 	    updateLog($ret0);
