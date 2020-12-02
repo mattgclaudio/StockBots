@@ -5,6 +5,13 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
+
+}
 
 function callDB($input) {
 
@@ -29,6 +36,7 @@ function requestProcessor($request)
   var_dump($request);
   if(!isset($request['type']))
   {
+    updateLog("ERROR: unsupported message type")
     return "ERROR: unsupported message type";
   }
 
