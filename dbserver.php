@@ -1,5 +1,6 @@
 #!/usr/bin/php
 <?php
+session_start();
 require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
@@ -14,25 +15,19 @@ function updateLog($errmsg) {
 }
 
 
-function validate($userone, $passone)
+function chkcreds($userone, $passone)
 {
  
-	# check inputted credentials against those in the DB
-	# create return array, error/success message and user id.
-	#
+
     $ret = array();
-    $ret['msg'] = " ";
-    $ret['uid'] = NULL;
+    $ret['msg'] = "error, not logged in.";
+    
 
-    # PHP connetion to DB
-    $mysqli = new mysqli('localhost', 'matt', 'toor', 'vault');
+    $mysqli = new mysqli('localhost', 'testdb', 'data', 'vault');
 
-    # catch clause for no DB connection, returns timestamped error message
     if ($mysqli->connect_errno) {
-<<<<<<< HEAD
 	    $ret0 = "Error from DB: failed to connect to DB ";
 	    $ret0 .= date("H:i:s");
-	    $ret0 .= "\n";
 	    updateLog($ret0);
 	    
     }
@@ -43,36 +38,30 @@ function validate($userone, $passone)
 
 	    $count = $retrow->num_rows;
 
-=======
-	    $err0 = "Error from DB: failed to connect to DB      " 
-		    . date("H:i:s");
-	    $ret['msg'] = $err0;
-	    return $ret; }
-
-	# query for a uid which matches the passed credentials
-    # hash passed password and compare with stored hash. 
-    # Must be stored with 
-    #
-    # INSERT INTO db.table (username, password) VALUES ('un', SHA1('pw'));
-    #
-    else if ($retrow = $mysqli->query(
-	    "SELECT uid FROM vault.users1 
-	    WHERE username='$userone' 
-		and password = SHA1('$passone')")) {
-	# if the query returns any rows		
-	   $count = $retrow->num_rows;
->>>>>>> 000be2eb6832821a7623c8c77b2ec73842989017
 	    if ($r = $retrow->fetch_assoc()){
-                        $ret['uid'] = $r["uid"];
-			$ret['msg'] = "Success, logged in!";
-			return $ret; }
-	# if no rows
+                        $ret['pubkey'] = $r['publickey'];
+                        $ret['privkey'] = $r['privatekey'];
+                        # updateLog();
+            }
+
+	   	   
+	    
+	  
+	    if ($count == 1) {
+		    $ret['msg'] = "success, logged in!";
+	    }
+
 	    else {
-		    $err1 = "failure, no user found with those credentials" .
-			    date("H:i:s");    
-		    $ret['msg'] = $err1;  }
-    						}	
-	
+	    
+		    $ret1 = "failure, no user found with those credentials";
+		    $ret1 .=  date("H:i:s");
+		    updateLog($ret1);
+		    	    
+	    }
+    }
+
+    return $ret;
+
 }
 
 
@@ -80,29 +69,21 @@ function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
 
+  $retString = "error";
+  
   var_dump($request);
-
   if(!isset($request['type']))
   {
-    $err01 = "ERROR: unsupported message type";
+    return "ERROR: unsupported message type";
   }
-
   switch ($request['type'])
   {
-
-  case "login":
-     	  # Pass inputted credentials to validate(), 
-	  # returns array with errors/uid, passes that directly back to the 
-	  # web front end with 'msg' => $valres	
-	  $valres = validate($request['username'],$request['password']);
-	  return array('msg' => $valres, 'error' => $err01 ?? 
-		  "Switch Type Valid" . date("H:i:s"));
-	  break; 
+    case "login":
+      $retCreds =  chkcreds($request['username'],$request['password']);	   
   }
-  
-} # end requestProcessor
+  return array('msg' => $retCreds['msg'], 'pubkey'=>$retCreds['pubkey'] ?? '', 'privkey'=>$retCreds['privkey'] ?? '');
+}
 
-	
 $server = new rabbitMQServer("db_server.ini","dbServer");
 
 echo "Database Server".PHP_EOL;
