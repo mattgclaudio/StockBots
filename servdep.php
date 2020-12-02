@@ -9,6 +9,12 @@ require_once('rabbitMQLib.inc');
 # packages, with a table called versions. Versions has timestamped rows
 # with the numbered listing of in this case the web server  
 
+unction updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
+
 function indexWebPackage($version)
 	{
  
@@ -20,7 +26,8 @@ function indexWebPackage($version)
 	
 	    $ret['errmsg'] = "Error from DB: 
 		    failed to connect to Deployment DB ";
-		return;     # FIX  updateLog($ret0 . date("H:i:s"));
+	    updateLog($ret['errmsg'] . date("H:i:s"));
+	    return;
 
 				    }
 
@@ -35,6 +42,7 @@ function indexWebPackage($version)
     else {
     	$ret['errmsg'] = "Error from Deploymemt DB:
 		Could not index new package." . date("H:i:s");
+	updateLog($ret['errmsg']);
     
     }
 	return $ret;
@@ -49,7 +57,8 @@ function sendVersions() {
 
             $ret['errmsg'] = "Error from DB: 
                     failed to connect to Deployment DB " . date("H:i:s");
-            return; }     # FIX  updateLog($ret0 . date("H:i:s"));
+            updateLog($ret['errmsg']);
+            return; }     
                                     
 	$sql = "select SubmitDate, PackageLocation from packages.versions";
 	if ($retrows = $mysqli -> query($sql)){
@@ -74,8 +83,9 @@ function requestProcessor($request)
   var_dump($request);
   
   if(!isset($request['type']))
-  
-  {
+   
+  { 
+    updateLog("ERROR: unsupported message type");
     return "ERROR: unsupported message type";
   }
   
