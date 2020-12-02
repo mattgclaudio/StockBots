@@ -3,7 +3,13 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
 
+}
 
 function packandship($versionNum) {
 	
@@ -13,7 +19,7 @@ function packandship($versionNum) {
 	$fullname = 'webPackage'.$versionNum.'.tar.gz';
 
 	# create & run shell command to compress needed directories
-	$compress = 'tar -czf '.$fullname.' /var/www/html/stockTracker /home/matt00/Downloads/git/rabbitMQMerged /home/matt00/Downloads/git/installscript.sh';
+	$compress = 'tar -czf '.$fullname.' /var/www/html/stockTracker/home/matt00/Downloads/git/rabbitMQMerged /home/matt00/Downloads/git/installscript.sh';
 	shell_exec(escapeshellcmd($compress));
 
 	# create & run shell command to send package to Deployment box
@@ -42,8 +48,8 @@ function versionupdate($versionID) {
         $response = $client->send_request($req);
 	$level = $response['messages'];
 	
-	echo PHP_EOL . PHP_EOL . "Error:  " . $level['errmsg'] . PHP_EOL;
-	echo "Confirmation:  " . $level['conf'] . PHP_EOL;
+	updateLog(PHP_EOL . PHP_EOL . "Error:  " . $level['errmsg'] . PHP_EOL);
+	updateLog("Confirmation:  " . $level['conf'] . PHP_EOL);
 	}
 
 

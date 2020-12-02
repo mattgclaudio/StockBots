@@ -3,7 +3,13 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
 
+}
 
 function packandship($versionid) {
 	
@@ -52,8 +58,8 @@ function versionupdate($versionID) {
 	$response = $client->send_request($req);
 	$level = $response['messages'];
 
-	echo PHP_EOL . PHP_EOL . "Error:   " . $level['errmsg'] . PHP_EOL .
-		"Confirmation:  " . $level['conf'] . PHP_EOL;
+	updateLog(PHP_EOL . PHP_EOL . "Error:   " . $level['errmsg'] . PHP_EOL .
+		"Confirmation:  " . $level['conf'] . PHP_EOL);
 	
 			}
 
