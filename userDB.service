@@ -1,0 +1,12 @@
+[Unit]
+Description= Rabbit Listener for User database authentication from web front end. 
+
+[Service]
+ExecStart=/home/matt/git/UserDatabase/dbserver.php
+ExecReload=/home/matt/git/UserDatabase/dbserver.php reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=on-failure
+RestartSec=15
+PIDFile=/run/userDB.pid
+
+
