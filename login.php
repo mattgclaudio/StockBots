@@ -11,6 +11,13 @@ require('/home/sam/git/webserverVM/rabbitMQMerged/ServerClient.php');
 require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
 >>>>>>> a5959c18fac39b1343a3ef3617f6b51af23868ca
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
+}
+
 # Var for what post returned
 $p = $_POST;
 
@@ -27,6 +34,10 @@ if (isset($p['uname'])) {
 	$header = $lucky['msg'];
 }
 
+else
+ updateLog("username does not exist"); 
+
+}
 
 ?>
 
