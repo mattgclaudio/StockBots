@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/matt/git/rabbitMQMerged/venv/bin/python3
 
 import alpaca_trade_api as tradeapi
 import sys

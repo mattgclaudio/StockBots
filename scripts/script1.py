@@ -1,7 +1,7 @@
-#!/usr/bin/python3
+#!/home/matt/git/rabbitMQMerged/venv/bin/python3
 
 import alpaca_trade_api as tradeapi
-import sys
+import sys, os
 
 jackal = sys.argv[1]
 luna = sys.argv[2]
@@ -19,5 +19,6 @@ tempconn = tradeapi.REST(jackal, luna, url, api_version='v2')
 # prints amount of free cash and the currency
 cashres = ("Cash:\t" + tempconn.get_account().__getattr__('cash') +
            "\t" + tempconn.get_account().__getattr__('currency'))
+
 
 print(cashres)

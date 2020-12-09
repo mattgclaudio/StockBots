@@ -60,8 +60,8 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    # close_model = Sequential()
-    # close_model.add(LSTM(units=50, return_sequences=True))
+    #  close_model = Sequential()
+    #  close_model.add(LSTM(units=50, return_sequences=True))
     # close_model.add(LSTM(units=50, return_sequences=False))
     # close_model.add(Dense(units=25))
     # close_model.add(Dense(units=1))
@@ -110,10 +110,10 @@ def predict_price(s_date, e_date, ticker: str):
     plt.legend(['Train', 'Valid', 'Predictions'])
     # get the current time, write the file name as time of day, ticker, graph. have to change
     # to year month day.
-    now = datetime.now()
-    fig_time = now.strftime("%H:%M:%S") + "  " + ticker + "  Graph"
+    # now = datetime.now()
+    # fig_time = now.strftime("%H:%M:%S") + "  " + ticker + "  Graph"
     # save the graph to the publically viewable web directory 
-    plt.savefig("/var/www/html/photoHost/test_plot.png")
+    plt.savefig("tempGraph.png")
 
 
 print(predict_price("2012-1-1", date.today(), sys.argv[1]))

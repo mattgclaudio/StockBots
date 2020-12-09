@@ -1,0 +1,19 @@
+● dmz.service - DMZ Listener
+   Loaded: loaded (/lib/systemd/system/dmz.service; static; vendor preset: enabled)
+   Active: active (running) since Wed 2020-12-09 10:32:37 EST; 43s ago
+  Process: 18188 ExecStop=/bin/kill -s QUIT $MAINPID (code=exited, status=0/SUCCESS)
+ Main PID: 18190 (dmzServer.php)
+    Tasks: 1 (limit: 4915)
+   CGroup: /system.slice/dmz.service
+           └─18190 /usr/bin/php /home/matt/git/rabbitMQMerged/dmzServer.php
+
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   string(1) "1"
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   ["action"]=>
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   string(3) "bot"
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   ["botsym"]=>
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   string(4) "MTRN"
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]: }
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]: Traceback (most recent call last):
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:   File "/home/matt/git/rabbitMQMerged/scripts/dmz_bot_1.py", line 3, in <module>
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]:     from yahoo_fin.stock_info import *
+Dec 09 10:33:04 sysIntBox dmzServer.php[18190]: ModuleNotFoundError: No module named 'yahoo_fin'

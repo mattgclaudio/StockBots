@@ -4,6 +4,14 @@ require_once('path.inc');
 require_once('get_host_info.inc');
 require_once('rabbitMQLib.inc');
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
+
+		}
+
 
 function getkeys($userid) {
 
@@ -25,10 +33,6 @@ function getkeys($userid) {
         }
 
 }
-
-
-
-
 
 
 
@@ -77,22 +81,47 @@ function requestProcessor($request)
 
 	case "bot":
 		$botsym = $request['botsym'];
-                $str = '/home/matt/git/rabbitMQMerged/dmz_bot_1.py ' . $botsym;
-		$shellres = shell_exec(escapeshellcmd($str));
-		if (!$shellres) {
-		$op = 'Error, no data found for that stock symbol';
-		break;
-		}
-		else {
-		$op = "Here is the prediction chart for " . $botsym;
-		
+		$str = '/home/matt/git/rabbitMQMerged/dmz_bot_1.py ';
+		$str .=	$botsym;
 
-		$photo_base64 = base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/images/tempGraph.png'));
+		$shellres = shell_exec(escapeshellcmd($str));
+		
+		$photo_base64 =
+			base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/tempGraph.png'));
+
+		$goodmsg = "Here is the prediction chart for " . $botsym;
+		$op = ($goodmsg); 
+
 		break;
-		}
+
+	case "add":
+		
+		$newsym = $request['symbol'];
+		$newprice = $request['price'];
+
+		$str = '/home/matt/git/rabbitMQMerged/scripts/addStock.py '
+			. $request['uid']. ' ' . $newsym . ' ' . $newprice;
+
+		$shellres = shell_exec(escapeshellcmd($str));
+		$op = $shellres;
+		break;
+
+
+	case "watch":
+		
+		$uid = $request['uid'];
+		
+		$str = '/home/matt/git/rabbitMQMerged/scripts/watchStock.py ' 
+			. $uid;
+
+		$shellres = shell_exec(escapeshellcmd($str));
+                $op = $shellres;
+                break;
+
 
 	default:
 		$emsg = "no valid action for user account given";
+		updateLog($emsg);
 		$op = "error in processing";
 		break;
 
