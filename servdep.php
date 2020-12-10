@@ -9,11 +9,12 @@ require_once('rabbitMQLib.inc');
 # packages, with a table called versions. Versions has timestamped rows
 # with the numbered listing of in this case the web server  
 
-unction updateLog($errmsg) {
+function updateLog($errmsg) {
 	# with this a+ opening mode we APPEND to this existing logbook
 	$newentry = fopen("/home/matt/logbook.txt", "a+");
 	fwrite($newentry, $errmsg ."/n");
 	fclose($newentry);
+}
 
 function indexWebPackage($version)
 	{
