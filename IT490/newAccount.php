@@ -11,6 +11,13 @@
 
 require_once('connect.php');
 
+function updateLog($errmsg) {
+	# with this a+ opening mode we APPEND to this existing logbook
+	$newentry = fopen("/home/matt/logbook.txt", "a+");
+	fwrite($newentry, $errmsg ."/n");
+	fclose($newentry);
+}
+
 	if(isset($_POST['reg_user'])){
 
 	$userName = $_POST['uname'];
@@ -19,7 +26,7 @@ require_once('connect.php');
 	$email = $_POST['email'];
 
 	if($passWord != $confirmPass){
-
+		updatelog('Passwords do not match.');
 		echo 'Passwords do not match.';
 	}
 	else{
@@ -33,6 +40,7 @@ require_once('connect.php');
 		echo 'You have succesfully created a new account.';
 	}
 	else {
+		updateLog('Failed to create new account. Please check your inputs.');
 		echo 'Failed to create new account. Please check your inputs.';
 	}
 	}
