@@ -66,15 +66,75 @@ function putorder($userid, $symbol, $number) {
 
 
 
-function callBot($p, $s, $symbol) {
+function callBot0($uid, $symbol) {
 
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
 
         $req = array();
 	$req['type'] = "dmz";
-	$req['action'] = "bot";
+	$req['uid'] = $uid;
+	$req['action'] = "bot0";
 	$req['botsym'] = $symbol;
 
         return $client->send_request($req);
 }
+
+function callBot1($uid, $symbol) {
+
+        $client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['uid'] = $uid;
+        $req['action'] = "bot1";
+        $req['botsym'] = $symbol;
+
+        return $client->send_request($req);
+}
+
+
+function callBot2($uid, $symbol) {
+
+        $client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['uid'] = $uid;
+        $req['action'] = "bot2";
+        $req['botsym'] = $symbol;
+
+        return $client->send_request($req);
+}
+
+
+function newWatchedStock($uid, $new_stock, $new_price) {
+	
+	$client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['uid'] = $uid;
+	$req['action'] = "add";
+	$req['symbol'] = $new_stock;
+	$req['price'] = $new_price;
+
+	return $client->send_request($req);
+
+}
+
+function checkWatchedStocks($uid) {
+
+	$client = new rabbitMQClient("rabbit.ini", "testServer");
+
+        $req = array();
+        $req['type'] = "dmz";
+        $req['uid'] = $uid;
+	$req['action'] = "watch";
+
+	return $client->send_request($req);
+
+
+}
+
+
 
