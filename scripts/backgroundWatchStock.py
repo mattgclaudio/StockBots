@@ -4,16 +4,20 @@ from yahoo_fin.stock_info import *
 import configparser
 import sys, os
 from twilio.rest import Client
-
+#
+# Somehow or other, we could pass the uid to this script and have it run 
+# continually in the background so it would text you
+# the instant a stock struck a given price. 
+#
 # send a text message from our Twilio number to the user about the stock
 # striking their set price, currently only
 # texts me, would have to collect phone numbers,
 # store them in keyring.ini and then pull based on uid
+
 def send_alert(alert):
-    # this requires you set these two os env vars with
-    # export twilio...="asd34234" in ~/.bashrc
-    account_sid = os.environ['TWILIO_ACCOUNT_SID']
-    auth_token = os.environ['TWILIO_AUTH_TOKEN']
+    account_sid = 'AC4774928d3febf2ab1f54f8df5b028115'
+    auth_token = '6950d7afe113961ccef0420fdda26ef3'
+
     client = Client(account_sid, auth_token)
     
     message = client.messages \
@@ -29,8 +33,7 @@ def check_price(ticker, entered_strike_price):
     if current_price <= entered_strike_price:
         return True
     else:
-        return False  # i know this seems insane, but it wasn't returning
-                        # false otherwise.
+        return False
 
 
 def watch_stock(uid):
@@ -53,20 +56,6 @@ def watch_stock(uid):
                         str(get_live_price(ticker_name))
                 send_alert(new_alert)
                 
-                ret += new_alert
-                ret += "\n\n"
-
-            else:
-                def_message = " Still no strike for stock " + \
-                        ticker_name + " at price " + \
-                        strike_price + ", current price is $" + \
-                        str(get_live_price(ticker_name)) + "\n\n"
-                
-                ret += def_message
-                ret += "\n\n"
-    
-    return ret
         
+watch_stock(sys.argv[1])
 
-
-print(watch_stock(sys.argv[1]))
