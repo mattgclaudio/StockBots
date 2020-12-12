@@ -41,6 +41,7 @@ function requestProcessor($request)
   echo "received request".PHP_EOL;
   var_dump($request);
 
+  # pull the customers keys from the ini file based on their uid
   $temp = getkeys($request['uid']);
 
   $pubkey = $temp['p1'];
@@ -54,10 +55,8 @@ function requestProcessor($request)
 
   switch ($request['action']) {
 
-		# this was my hacky way of getting php to pass the variables
-	# correctly when its moved to a shell command (python)
   
-  
+ 	# get current cash balance of our testing paper account 
   	case "cash": 
 		$start = '/home/matt/git/rabbitMQMerged/scripts/script1.py '
 		 . $pubkey . ' ' . $privkey;
@@ -65,12 +64,14 @@ function requestProcessor($request)
 		$photo_base64 = base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/images/mustang.png'));
 		break;
 
+		# return active positions array
 	case "pos":
 		$start = '/home/matt/git/rabbitMQMerged/scripts/script2.py ';
 		$start .= $pubkey . ' ' . $privkey;
 		$op = shell_exec(escapeshellcmd($start));
 		break;
-	
+
+	# pass vars and execute order request through API
 	case "order":
 		$sym = $request['sym'];
 		$num = $request['num'];
@@ -79,7 +80,29 @@ function requestProcessor($request)
 		$op = empty($shellres) ? "Order placed" : $shellres;
 		break;
 
-	case "bot":
+	# send ticket to bot0 for processing, send back photo and conf
+
+
+	case "bot0":
+		$botsym = $request['botsym'];
+		$str = '/home/matt/git/rabbitMQMerged/dmz_bot_0.py ';
+		$str .=	$botsym;
+
+		$shellres = shell_exec(escapeshellcmd($str));
+		
+		$photo_base64 =
+			base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/tempGraph0.png'));
+
+		$goodmsg = "Here is the prediction chart for " . $botsym;
+		$op = ($goodmsg); 
+		break;
+
+
+
+	# send stock ticker to bot1 script for processing, send back photo
+		# and confirmation message	
+	
+	case "bot1":
 		$botsym = $request['botsym'];
 		$str = '/home/matt/git/rabbitMQMerged/dmz_bot_1.py ';
 		$str .=	$botsym;
@@ -87,12 +110,30 @@ function requestProcessor($request)
 		$shellres = shell_exec(escapeshellcmd($str));
 		
 		$photo_base64 =
-			base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/tempGraph.png'));
+			base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/tempGraph1.png'));
 
 		$goodmsg = "Here is the prediction chart for " . $botsym;
 		$op = ($goodmsg); 
-
 		break;
+
+
+	# send stock ticker to bot2 script for processing, send back photo
+		# and confirmation message
+	
+	case "bot2":
+		$botsym = $request['botsym'];
+		$str = '/home/matt/git/rabbitMQMerged/dmz_bot_2.py ';
+		$str .=	$botsym;
+
+		$shellres = shell_exec(escapeshellcmd($str));
+		
+		$photo_base64 =
+			base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/tempGraph2.png'));
+
+		$goodmsg = "Here is the prediction chart for " . $botsym;
+		$op = ($goodmsg); 
+		break;
+
 
 	case "add":
 		

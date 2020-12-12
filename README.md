@@ -1,2 +1,2 @@
-# rabbitMQMerged
-Takes commands passed through the rabbitVM from the webVM and executes them based upon the indicated action, returns results. 
+##
+All the dmz box's files live here, namely dmzServer.php, the assorted scripts kept in /scripts, as well as the bots which live in this top folder so they can access the python venv they need to run. 

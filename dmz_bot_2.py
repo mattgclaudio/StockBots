@@ -61,20 +61,20 @@ def predict_price(s_date, e_date, ticker: str):
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
     # close_model = Sequential()
-    # close_model.add(LSTM(units=70, return_sequences=True))
+    # close_model.add(LSTM(units=80, return_sequences=True))
     # close_model.add(LSTM(units=70, return_sequences=False))
-    # close_model.add(Dense(units=35))
+    # close_model.add(Dense(units=45))
     # close_model.add(Dense(units=1))
 
     # load trained model
-    close_model = keras.models.load_model('model_31')
+    close_model = keras.models.load_model('model_33')
 
     close_model.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
     close_model.fit(x_train, y_train, batch_size=1, epochs=1)
 
     # save the weights of the neurons after the model trains
-    close_model.save("model_31")
+    close_model.save("model_33")
 
     testset = scaled_set[trainlength - 60:, :]
 
@@ -101,19 +101,15 @@ def predict_price(s_date, e_date, ticker: str):
     v = all_data[trainlength:]
     v['Predictions'] = guess
 
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(16, 8))
     plt.title(ticker + ' Predictions')
     plt.xlabel('Date')
     plt.ylabel('Stock Price', fontsize=18)
     plt.plot(t['close'])
     plt.plot(v[['close', 'Predictions']])
     plt.legend(['Train', 'Valid', 'Predictions'])
-    # get the current time, write the file name as time of day, ticker, graph. have to change
-    # to year month day.
-    # now = datetime.now()
-    # fig_time = now.strftime("%H:%M:%S") + "  " + ticker + "  Graph"
-    # save the graph to the publically viewable web directory 
-    plt.savefig("tempGraph1.png")
+    
+    plt.savefig("tempGraph2.png")
 
 
 print(predict_price("2010-1-1", date.today(), sys.argv[1]))

@@ -1,15 +1,12 @@
-#!/home/matt/git/rabbitMQMerged/venv/bin/python3
-
 from yahoo_fin.stock_info import *
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 import numpy as np
-import tensorflow as tf
 from tensorflow import keras
 from keras.models import Sequential
 from keras.layers import Dense, LSTM
-from datetime import date, datetime
+from datetime import date
 import csv
 import math
 import sys
@@ -17,18 +14,14 @@ import sys
 scl = MinMaxScaler()
 
 plt.style.use('bmh')
-
 pd.options.display.width = 0
+
+
+# returned as pandas dataframe
 
 #  user must input dates as year-month-day
 def predict_price(s_date, e_date, ticker: str):
-    
-    try:
-        all_data = get_data(ticker, start_date=s_date, end_date=e_date).filter(['close'])
-
-    except AssertionError:  # if the function above returns no data
-        return False
-
+    all_data = get_data(ticker, start_date=s_date, end_date=e_date).filter(['close'])
 
     # Numpy Array, no dates!
     close_set = all_data.values
@@ -50,7 +43,7 @@ def predict_price(s_date, e_date, ticker: str):
 
     for j in range(60, len(trainset)):
         x_train.append(trainset[j - 60:j, 0])  # the 60 days leading UP to the day in question
-        y_train.append(trainset[j, 0])  # just the day in question
+        y_train.append(trainset[j, 0])         # just the day in question
 
     # x_train and y_train are now lists, convert to np.array again
 
@@ -60,21 +53,21 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
-    # close_model = Sequential()
-    # close_model.add(LSTM(units=70, return_sequences=True))
-    # close_model.add(LSTM(units=70, return_sequences=False))
-    # close_model.add(Dense(units=35))
-    # close_model.add(Dense(units=1))
+#     machina = Sequential()
+#     machina.add(LSTM(units=50, return_sequences=True))
+#     machina.add(LSTM(units=50, return_sequences=False))
+#     machina.add(Dense(units=25))
+#     machina.add(Dense(units=1))
 
     # load trained model
-    close_model = keras.models.load_model('model_31')
+    machina = keras.models.load_model('saved_model.pb')
 
-    close_model.compile(optimizer="adam", loss='mean_absolute_percentage_error')
+    machina.compile(optimizer="adam", loss='mean_absolute_percentage_error')
 
-    close_model.fit(x_train, y_train, batch_size=1, epochs=1)
+    machina.fit(x_train, y_train, batch_size=1, epochs=1)
 
     # save the weights of the neurons after the model trains
-    close_model.save("model_31")
+    machina.save()
 
     testset = scaled_set[trainlength - 60:, :]
 
@@ -91,7 +84,7 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
 
-    guess = close_model.predict(x_test)
+    guess = machina.predict(x_test)
     guess = scl.inverse_transform(guess)
 
     rmse_error = np.sqrt(np.mean(((guess - y_test) ** 2)))
@@ -101,22 +94,14 @@ def predict_price(s_date, e_date, ticker: str):
     v = all_data[trainlength:]
     v['Predictions'] = guess
 
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(16, 8))
     plt.title(ticker + ' Predictions')
     plt.xlabel('Date')
     plt.ylabel('Stock Price', fontsize=18)
     plt.plot(t['close'])
     plt.plot(v[['close', 'Predictions']])
     plt.legend(['Train', 'Valid', 'Predictions'])
-    # get the current time, write the file name as time of day, ticker, graph. have to change
-    # to year month day.
-    # now = datetime.now()
-    # fig_time = now.strftime("%H:%M:%S") + "  " + ticker + "  Graph"
-    # save the graph to the publically viewable web directory 
-    plt.savefig("tempGraph1.png")
+    plt.savefig('test_plot.png')
 
 
-print(predict_price("2010-1-1", date.today(), sys.argv[1]))
-
-
-
+predict_price(sys.argv[1], sys.argv[2], sys.argv[3])
