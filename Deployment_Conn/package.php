@@ -6,18 +6,13 @@ require_once('rabbitMQLib.inc');
 
 
 function packandship($versionNum) {
-	
-	# we could pass a time or version number as a parameter and update the 	       # package name that way, or differentiate them some other way,
-	# but we should probably not just have them all named the same.
-	# either way here we compress the contents of the webfacing 
-	# directory and the rabbit directory that holds the client
-	# functions and such.
+	# pass in a name for this version
 
-	# here
+	# eventual filename
 	$fullname = 'webPackage'.$versionNum.'.tar.gz';
 
 	# create & run shell command to compress needed directories
-	$compress = 'tar -czf '.$fullname.' /var/www/html/stockTracker /home/matt00/Downloads/git/rabbitMQMerged';
+	$compress = 'tar -czf '.$fullname.' /var/www/html/stockTracker /home/matt00/git/rabbitMQMerged /etc/apache2/';
 	shell_exec(escapeshellcmd($compress));
 
 	# create & run shell command to send package to Deployment box
