@@ -9,18 +9,31 @@ from twilio.rest import Client
 # striking their set price, currently only
 # texts me, would have to collect phone numbers,
 # store them in keyring.ini and then pull based on uid
-def send_alert(alert):
+
+def get_number(userid):
+    config = configparser.ConfigParser()
+    config.read('keyring.ini')
+    headers = config.sections()
+
+    for header in headers:
+        if (header == str(userid)):
+            return config[header]['phone'];
+
+
+# takes uid to look up phone number, alert containing strike message
+def send_alert(alert, uuid):
     # this requires you set these two os env vars with
     # export twilio...="asd34234" in ~/.bashrc
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
-    
+    client_number = get_number(uuid)
+
     message = client.messages \
                 .create(
                      body=alert,
-                     from_='+18048054083',
-                     to='+19739081950'
+                     from_='+18048054083', # our twilio number
+                     to=client_number
                  )
 
 
@@ -51,7 +64,8 @@ def watch_stock(uid):
                         " has struck below your set price of $" + \
                         strike_price + " at $" + \
                         str(get_live_price(ticker_name))
-                send_alert(new_alert)
+                # text this alert to the customer
+                send_alert(new_alert, uid)
                 
                 ret += new_alert
                 ret += "\n\n"

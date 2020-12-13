@@ -58,15 +58,17 @@ function requestProcessor($request)
   
  	# get current cash balance of our testing paper account 
   	case "cash": 
-		$start = '/home/matt/git/rabbitMQMerged/scripts/script1.py '
-		 . $pubkey . ' ' . $privkey;
+		
+	$start = '/home/matt/git/rabbitMQMerged/scripts/script1.py ' . 
+		$pubkey . ' ' . $privkey;
+
 		$op = shell_exec(escapeshellcmd($start));
-		$photo_base64 = base64_encode(file_get_contents('/home/matt/git/rabbitMQMerged/images/mustang.png'));
 		break;
 
-		# return active positions array
+	
+	# return active positions array
 	case "pos":
-		$start = '/home/matt/git/rabbitMQMerged/scripts/script2.py ';
+	$start = '/home/matt/git/rabbitMQMerged/scripts/script2.py ';
 		$start .= $pubkey . ' ' . $privkey;
 		$op = shell_exec(escapeshellcmd($start));
 		break;
