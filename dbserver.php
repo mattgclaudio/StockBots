@@ -40,10 +40,7 @@ function validate($userone, $passone)
     #
     # INSERT INTO db.table (username, password) VALUES ('un', SHA1('pw'));
     #
-    else if ($retrow = $mysqli->query(
-	    "SELECT uid FROM vault.users1 
-	    WHERE username='$userone' 
-		and password = SHA1('$passone')")) {
+    else if ($retrow = $mysqli->query("SELECT uid FROM vault.users WHERE username='$userone' AND hex(password) = sha1('$passone')")) {
 	# if the query returns any rows		
 	   $count = $retrow->num_rows;
 	    if ($r = $retrow->fetch_assoc()){
