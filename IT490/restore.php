@@ -1,6 +1,6 @@
 <?php
 //Enter your database information here and the name of the backup file
-$mysqlDatabaseName ='login_db_backup';
+$mysqlDatabaseName ='login_db';
 $mysqlUserName ='rabbit';
 $mysqlPassword ='rabbitMQ2020';
 $mysqlHostName ='localhost';
