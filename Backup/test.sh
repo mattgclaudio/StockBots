@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rm /home/matt/git/UserDatabase/Backup/userbackup.sql
-mysqldump vault > /home/matt/git/UserDatabase/Backup/userbackup.sql
+echo 'oh smith dont be such a pollyanna' > /home/matt/Desktop/pollyanan.txt
+
