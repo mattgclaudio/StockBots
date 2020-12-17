@@ -37,8 +37,6 @@ if (isset($p['uname'])) {
 else
  updateLog("username does not exist"); 
 
-}
-
 ?>
 
 <!DOCTYPE html>
