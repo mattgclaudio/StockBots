@@ -1,0 +1,7 @@
+DMZ: Uses dmzServer.php All the dmz box's files live here, namely dmzServer.php, the assorted scripts kept in /scripts, as well as the bots which live in this top folder so they can access the python venv they need to run. Venv is configured with pip to have all the necessary packages to support the tensorflow functions. that would be a much, much longer README.
+
+that venv must be set up with pip to have all the packages the scripts need, tensorflow and matlab being some of the biggest. Also needs the twilio code for sending the text messages.
+
+UserDB: Uses dbserber.php Code for database VM, only involved in authentication so dbServer just sets up a rabbitmq server listener and waits for an auth request through the rabbitvm server. should not process anything after that. Returns the two uid neccessary for accessing the API on the DMZ. 
+Final changes...just the hashed passwords, stored in binary though sha1 outputs a hex value. Returns the userid of the user to the web server which pairs with a set of confidential trading keys assigned to the user's API account for trading.
+RabbitVM: Uses switchingServer.php Code has not changed much since i worked the kinks out of the switchingServer file, if it aint broke, dont fix it. holds ini files in this dir for the web, userdb, and dmz servers, passes messages along from one to the other. 
