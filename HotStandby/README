@@ -1,7 +1,0 @@
-
-####
-
-
-hotStandbyUpdate should stay on the master db box and be run as a cron job every X minutes
-
-checkMaster should live on the backup server and continually ping the master, then start the exchange & userDB services if it sees the master offline. 
