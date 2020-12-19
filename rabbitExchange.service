@@ -1,0 +1,13 @@
+[Unit]
+Description= Rabbit Exchange Server 
+
+[Service]
+Type=simple
+ExecStart=/home/matt/git/RabbitServer/switchingServer.php
+ExecReload=/home/matt/git/RabbitServer/switchingServer.php reload
+ExecStop=/bin/kill -2 $MAINPID
+Restart=always
+RestartSec=15
+
+
+

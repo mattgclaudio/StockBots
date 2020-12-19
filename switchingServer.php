@@ -7,6 +7,7 @@ require_once('rabbitMQLib.inc');
 
 function updateLog($errmsg) {
 	# with this a+ opening mode we APPEND to this existing logbook
+	$stamp = date("H:i:s");
 	$newentry = fopen("/home/matt/logbook.txt", "a+");
 	fwrite($newentry, $errmsg ."/n");
 	fclose($newentry);
@@ -16,7 +17,7 @@ function updateLog($errmsg) {
 function callDB($input) {
 
 	$client = new rabbitMQClient("db_server.ini","dbServer");
-
+	updateLog("callingDB\t");
 	return $client->send_request($input);
 
 	}
@@ -25,18 +26,18 @@ function callDB($input) {
 function callDMZ($input) {
 
         $client = new rabbitMQClient("dmzServer.ini","dmzServer");
-
+	updateLog("callingDMZ");
         return $client->send_request($input);
-	}
-
+}
 
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
   var_dump($request);
+
   if(!isset($request['type']))
   {
-    updateLog("ERROR: unsupported message type")
+    updateLog("ERROR: unsupported message type");
     return "ERROR: unsupported message type";
   }
 
@@ -48,6 +49,10 @@ function requestProcessor($request)
 		break;
 	case "dmz":
 		return callDMZ($request);
+		break;
+	
+	case "ref":
+		return 5;
 		break;
    }
 }

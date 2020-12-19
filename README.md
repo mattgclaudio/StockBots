@@ -21,3 +21,8 @@ Right now the RabbitMQ Broker VM Works with switchingserver.php, dmzServer.ini, 
 11/1
 
 No code updates, just want to state that the Rabbit Server VM's code, i.e switchingserver.php, just does the job of forwarding and returning the messages sent from one VM to another based on their requests['type'] var. 
+
+
+
+12/18 FINAL UPDATE
+Code has not changed much since i worked the kinks out of the switchingServer file, if it aint broke, dont fix it. holds ini files in this dir for the web, userdb, and dmz servers, passes messages along from one to the other. 
