@@ -21,7 +21,7 @@ require_once('rabbitMQLib.inc');
 
 function dologin($a, $b) {
 	
-	$client = new rabbitMQClient("rabbit.ini","testServer");
+	$client = new rabbitMQClient("rabbit.ini","failServer");
 
 	$request = array();
 
@@ -36,7 +36,7 @@ function dologin($a, $b) {
 
 function getcash ($userid) {
 
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
 	$req = array();
 	$req['type'] = "dmz";
@@ -50,7 +50,7 @@ function getcash ($userid) {
 
 function getpos($userid) {
 
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -65,7 +65,7 @@ function getpos($userid) {
 
 function putorder($userid, $symbol, $number) {
 
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -81,7 +81,7 @@ function putorder($userid, $symbol, $number) {
 
 function callBot0($uid, $symbol) {
 
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
 	$req['type'] = "dmz";
@@ -94,7 +94,7 @@ function callBot0($uid, $symbol) {
 
 function callBot1($uid, $symbol) {
 
-        $client = new rabbitMQClient("rabbit.ini", "testServer");
+        $client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -108,7 +108,7 @@ function callBot1($uid, $symbol) {
 
 function callBot2($uid, $symbol) {
 
-        $client = new rabbitMQClient("rabbit.ini", "testServer");
+        $client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -122,7 +122,7 @@ function callBot2($uid, $symbol) {
 
 function newWatchedStock($uid, $new_stock, $new_price) {
 	
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -137,7 +137,7 @@ function newWatchedStock($uid, $new_stock, $new_price) {
 
 function checkWatchedStocks($uid) {
 
-	$client = new rabbitMQClient("rabbit.ini", "testServer");
+	$client = new rabbitMQClient("rabbit.ini", "failServer");
 
         $req = array();
         $req['type'] = "dmz";
@@ -173,7 +173,7 @@ function pingbackupdb() {
 
 function pingrabbitdb() {
 	# main rabbitDB Server request array
-	$clientA = new rabbitMQClient("rabbit.ini", "testServer");
+	$clientA = new rabbitMQClient("rabbit.ini", "failServer");
         $reqA = [
         "type" => "ref",
 	"refid" => "QA",];	

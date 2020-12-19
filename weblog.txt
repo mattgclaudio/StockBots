@@ -1,0 +1,740 @@
+
+inside pingrabbitdb script
+Main hit   00:42:08
+inside pingrabbitdb script
+Main hit   00:55:01
+inside pingrabbitdb script
+Main hit   00:56:01
+inside pingrabbitdb script
+Main hit   00:57:01
+inside pingrabbitdb script
+Main hit   00:58:01
+inside pingrabbitdb script
+Main hit   00:59:01
+inside pingrabbitdb script
+Main hit   01:00:01
+inside pingrabbitdb script
+Main hit   01:01:01
+inside pingrabbitdb script
+Main hit   01:02:01
+inside pingrabbitdb script
+Main hit   01:03:01
+inside pingrabbitdb script
+Main hit   01:04:01
+inside pingrabbitdb script
+Main hit   01:05:01
+inside pingrabbitdb script
+Main hit   01:06:01
+inside pingrabbitdb script
+Main hit   01:07:01
+inside pingrabbitdb script
+Main hit   01:08:01
+inside pingrabbitdb script
+Main hit   01:09:01
+inside pingrabbitdb script
+Main hit   01:10:01
+inside pingrabbitdb script
+Main hit   01:11:01
+inside pingrabbitdb script
+Main hit   01:12:01
+inside pingrabbitdb script
+Main hit   01:13:01
+inside pingrabbitdb script
+Main hit   01:14:01
+inside pingrabbitdb script
+Main hit   01:15:02
+inside pingrabbitdb script
+Main hit   01:16:01
+inside pingrabbitdb script
+Main hit   01:17:01
+inside pingrabbitdb script
+Main hit   01:18:01
+inside pingrabbitdb script
+Main hit   01:19:01
+inside pingrabbitdb script
+Main hit   01:20:01
+inside pingrabbitdb script
+Main hit   01:21:01
+inside pingrabbitdb script
+Main hit   01:22:01
+inside pingrabbitdb script
+Main hit   01:23:01
+inside pingrabbitdb script
+Main hit   01:24:01
+inside pingrabbitdb script
+Main hit   01:25:01
+inside pingrabbitdb script
+Main hit   01:26:01
+inside pingrabbitdb script
+Main hit   01:27:01
+inside pingrabbitdb script
+Main hit   01:28:01
+inside pingrabbitdb script
+Main hit   01:29:01
+inside pingrabbitdb script
+Main hit   01:30:01
+inside pingrabbitdb script
+Main hit   01:31:01
+inside pingrabbitdb script
+Main hit   01:32:01
+inside pingrabbitdb script
+Main hit   01:33:01
+inside pingrabbitdb script
+Main hit   01:34:01
+inside pingrabbitdb script
+Main hit   01:35:01
+inside pingrabbitdb script
+Main hit   01:36:01
+inside pingrabbitdb script
+Main hit   01:37:01
+inside pingrabbitdb script
+Main hit   01:38:01
+inside pingrabbitdb script
+Main hit   01:39:01
+inside pingrabbitdb script
+Main hit   01:40:02
+inside pingrabbitdb script
+Main hit   01:41:01
+inside pingrabbitdb script
+Main hit   01:42:01
+inside pingrabbitdb script
+Main hit   01:43:01
+inside pingrabbitdb script
+Main hit   01:44:01
+inside pingrabbitdb script
+Main hit   01:45:01
+inside pingrabbitdb script
+Main hit   01:46:01
+inside pingrabbitdb script
+Main hit   01:47:01
+inside pingrabbitdb script
+Main hit   01:48:01
+inside pingrabbitdb script
+Main hit   01:49:01
+inside pingrabbitdb script
+Main hit   01:50:01
+inside pingrabbitdb script
+Main hit   01:51:01
+inside pingrabbitdb script
+Main hit   01:52:01
+inside pingrabbitdb script
+Main hit   01:53:01
+inside pingrabbitdb script
+Main hit   01:54:01
+inside pingrabbitdb script
+Main hit   01:55:01
+inside pingrabbitdb script
+Main hit   01:56:01
+inside pingrabbitdb script
+Main hit   01:57:01
+inside pingrabbitdb script
+Main hit   01:58:01
+inside pingrabbitdb script
+Main hit   01:59:01
+inside pingrabbitdb script
+Main hit   02:00:01
+inside pingrabbitdb script
+backup hit   02:01:20
+main down, switching to backup02:01:20
+inside pingrabbitdb script
+backup hit   02:02:07
+backup hit and switched to02:02:07
+inside pingrabbitdb script
+backup hit   02:03:05
+backup hit and switched to02:03:05
+inside pingrabbitdb script
+backup hit   02:04:40
+backup hit and switched to02:04:40
+inside pingrabbitdb script
+backup hit   02:05:04
+backup hit and switched to02:05:04
+inside pingrabbitdb script
+backup hit   02:06:04
+backup hit and switched to    02:06:04
+inside pingrabbitdb script
+backup hit   02:07:04
+backup hit and switched to    02:07:04
+inside pingrabbitdb script
+backup hit   02:08:04
+backup hit and switched to    02:08:04
+inside pingrabbitdb script
+backup hit   02:09:05
+backup hit and switched to    02:09:05
+inside pingrabbitdb script
+backup hit   02:10:04
+backup hit and switched to    02:10:04
+inside pingrabbitdb script
+backup hit   02:11:04
+backup hit and switched to    02:11:04
+inside pingrabbitdb script
+backup hit   02:12:04
+backup hit and switched to    02:12:04
+inside pingrabbitdb script
+backup hit   02:13:04
+backup hit and switched to    02:13:04
+inside pingrabbitdb script
+backup hit   02:14:05
+backup hit and switched to    02:14:05
+inside pingrabbitdb script
+backup hit   02:15:04
+backup hit and switched to    02:15:04
+inside pingrabbitdb script
+backup hit   02:16:04
+backup hit and switched to    02:16:04
+inside pingrabbitdb script
+backup hit   02:17:04
+backup hit and switched to    02:17:04
+inside pingrabbitdb script
+backup hit   02:18:04
+backup hit and switched to    02:18:04
+inside pingrabbitdb script
+backup hit   02:19:04
+main down, switching to backup02:19:04
+inside pingrabbitdb script
+backup hit   02:20:04
+main down, switching to backup02:20:04
+inside pingrabbitdb script
+backup hit   02:21:05
+main down, switching to backup02:21:05
+inside pingrabbitdb script
+backup hit   02:22:04
+main down, switching to backup02:22:04
+inside pingrabbitdb script
+backup hit   02:23:04
+main down, switching to backup02:23:04
+inside pingrabbitdb script
+backup hit   02:24:04
+main down, switching to backup02:24:04
+inside pingrabbitdb script
+backup hit   02:25:04
+main down, switching to backup02:25:04
+inside pingrabbitdb script
+backup hit   02:26:04
+main down, switching to backup02:26:04
+inside pingrabbitdb script
+backup hit   02:27:05
+main down, switching to backup02:27:05
+inside pingrabbitdb script
+backup hit   02:28:04
+main down, switching to backup02:28:04
+inside pingrabbitdb script
+backup hit   02:29:04
+backup hit and switched to    02:29:04
+inside pingrabbitdb script
+backup hit   02:30:04
+backup hit and switched to    02:30:04
+inside pingrabbitdb script
+backup hit   02:31:04
+backup hit and switched to    02:31:04
+inside pingrabbitdb script
+backup hit   02:32:04
+backup hit and switched to    02:32:04
+inside pingrabbitdb script
+backup hit   02:33:04
+backup hit and switched to    02:33:04
+inside pingrabbitdb script
+backup hit   02:34:04
+backup hit and switched to    02:34:04
+inside pingrabbitdb script
+backup hit   02:35:04
+backup hit and switched to    02:35:04
+inside pingrabbitdb script
+backup hit   02:36:05
+backup hit and switched to    02:36:05
+inside pingrabbitdb script
+backup hit   02:37:04
+backup hit and switched to    02:37:04
+inside pingrabbitdb script
+backup hit   02:38:05
+backup hit and switched to    02:38:05
+inside pingrabbitdb script
+backup hit   02:39:04
+backup hit and switched to    02:39:04
+inside pingrabbitdb script
+backup hit   02:40:04
+backup hit and switched to    02:40:04
+inside pingrabbitdb script
+backup hit   02:41:04
+backup hit and switched to    02:41:04
+inside pingrabbitdb script
+backup hit   02:42:04
+backup hit and switched to    02:42:04
+inside pingrabbitdb script
+backup hit   02:43:04
+backup hit and switched to    02:43:04
+inside pingrabbitdb script
+backup hit   02:44:04
+backup hit and switched to    02:44:04
+inside pingrabbitdb script
+backup hit   02:45:04
+backup hit and switched to    02:45:04
+inside pingrabbitdb script
+backup hit   02:46:05
+backup hit and switched to    02:46:05
+inside pingrabbitdb script
+backup hit   02:47:04
+backup hit and switched to    02:47:04
+inside pingrabbitdb script
+backup hit   02:48:04
+backup hit and switched to    02:48:04
+inside pingrabbitdb script
+backup hit   02:49:04
+backup hit and switched to    02:49:04
+inside pingrabbitdb script
+backup hit   02:50:04
+backup hit and switched to    02:50:04
+inside pingrabbitdb script
+backup hit   02:51:04
+backup hit and switched to    02:51:04
+inside pingrabbitdb script
+backup hit   02:52:04
+backup hit and switched to    02:52:04
+inside pingrabbitdb script
+backup hit   02:53:04
+backup hit and switched to    02:53:04
+inside pingrabbitdb script
+backup hit   02:54:04
+backup hit and switched to    02:54:04
+inside pingrabbitdb script
+backup hit   02:55:05
+backup hit and switched to    02:55:05
+inside pingrabbitdb script
+backup hit   02:56:04
+backup hit and switched to    02:56:04
+inside pingrabbitdb script
+backup hit   02:57:04
+backup hit and switched to    02:57:04
+inside pingrabbitdb script
+backup hit   02:58:04
+backup hit and switched to    02:58:04
+inside pingrabbitdb script
+backup hit   02:59:04
+backup hit and switched to    02:59:04
+inside pingrabbitdb script
+backup hit   03:00:04
+backup hit and switched to    03:00:04
+inside pingrabbitdb script
+backup hit   03:01:04
+backup hit and switched to    03:01:04
+inside pingrabbitdb script
+backup hit   03:02:05
+backup hit and switched to    03:02:05
+inside pingrabbitdb script
+backup hit   03:03:04
+backup hit and switched to    03:03:04
+inside pingrabbitdb script
+backup hit   03:04:04
+backup hit and switched to    03:04:04
+inside pingrabbitdb script
+backup hit   03:05:04
+backup hit and switched to    03:05:04
+inside pingrabbitdb script
+backup hit   03:06:04
+backup hit and switched to    03:06:04
+inside pingrabbitdb script
+backup hit   03:07:04
+backup hit and switched to    03:07:04
+inside pingrabbitdb script
+backup hit   03:08:04
+backup hit and switched to    03:08:04
+inside pingrabbitdb script
+backup hit   03:09:04
+backup hit and switched to    03:09:04
+inside pingrabbitdb script
+backup hit   03:10:05
+backup hit and switched to    03:10:05
+inside pingrabbitdb script
+backup hit   03:11:04
+backup hit and switched to    03:11:04
+inside pingrabbitdb script
+backup hit   03:12:04
+backup hit and switched to    03:12:04
+inside pingrabbitdb script
+backup hit   03:13:04
+backup hit and switched to    03:13:04
+inside pingrabbitdb script
+backup hit   03:14:04
+backup hit and switched to    03:14:04
+inside pingrabbitdb script
+backup hit   03:15:04
+backup hit and switched to    03:15:04
+inside pingrabbitdb script
+backup hit   03:16:05
+backup hit and switched to    03:16:05
+inside pingrabbitdb script
+backup hit   03:17:04
+backup hit and switched to    03:17:04
+inside pingrabbitdb script
+backup hit   03:18:04
+backup hit and switched to    03:18:04
+inside pingrabbitdb script
+backup hit   03:19:04
+backup hit and switched to    03:19:04
+inside pingrabbitdb script
+backup not hit   05:46:45
+neither are up05:46:45
+inside pingrabbitdb script
+backup not hit   05:47:07
+neither are up05:47:07
+inside pingrabbitdb script
+backup not hit   05:48:07
+neither are up05:48:07
+inside pingrabbitdb script
+backup not hit   05:49:07
+neither are up05:49:07
+inside pingrabbitdb script
+backup not hit   05:50:07
+neither are up05:50:07
+inside pingrabbitdb script
+backup not hit   05:51:08
+neither are up05:51:08
+inside pingrabbitdb script
+backup not hit   05:52:07
+neither are up05:52:07
+inside pingrabbitdb script
+backup not hit   05:53:07
+neither are up05:53:07
+inside pingrabbitdb script
+backup not hit   05:54:07
+neither are up05:54:07
+inside pingrabbitdb script
+backup not hit   05:55:07
+neither are up05:55:07
+inside pingrabbitdb script
+backup not hit   05:56:07
+neither are up05:56:07
+inside pingrabbitdb script
+backup not hit   05:57:08
+neither are up05:57:08
+inside pingrabbitdb script
+backup not hit   05:58:07
+neither are up05:58:07
+inside pingrabbitdb script
+backup not hit   05:59:07
+neither are up05:59:07
+inside pingrabbitdb script
+backup not hit   06:00:07
+neither are up06:00:07
+inside pingrabbitdb script
+backup not hit   06:01:07
+neither are up06:01:07
+inside pingrabbitdb script
+backup not hit   06:02:07
+neither are up06:02:07
+inside pingrabbitdb script
+backup not hit   06:03:08
+neither are up06:03:08
+inside pingrabbitdb script
+backup not hit   06:04:07
+neither are up06:04:07
+inside pingrabbitdb script
+backup not hit   06:05:07
+neither are up06:05:07
+inside pingrabbitdb script
+backup not hit   06:06:07
+neither are up06:06:07
+inside pingrabbitdb script
+backup not hit   06:07:07
+neither are up06:07:07
+inside pingrabbitdb script
+backup not hit   06:08:07
+neither are up06:08:07
+inside pingrabbitdb script
+backup not hit   06:09:07
+neither are up06:09:07
+inside pingrabbitdb script
+backup not hit   06:10:08
+neither are up06:10:08
+inside pingrabbitdb script
+backup not hit   06:11:07
+neither are up06:11:07
+inside pingrabbitdb script
+backup not hit   06:12:07
+neither are up06:12:07
+inside pingrabbitdb script
+backup not hit   06:13:07
+neither are up06:13:07
+inside pingrabbitdb script
+backup not hit   06:14:07
+neither are up06:14:07
+inside pingrabbitdb script
+backup not hit   06:15:07
+neither are up06:15:07
+inside pingrabbitdb script
+backup not hit   06:16:08
+neither are up06:16:08
+inside pingrabbitdb script
+backup not hit   06:17:07
+neither are up06:17:07
+inside pingrabbitdb script
+backup not hit   06:18:07
+neither are up06:18:07
+inside pingrabbitdb script
+backup not hit   06:19:07
+neither are up06:19:07
+inside pingrabbitdb script
+backup not hit   06:20:07
+neither are up06:20:07
+inside pingrabbitdb script
+backup not hit   06:23:07
+neither are up06:23:07
+inside pingrabbitdb script
+backup not hit   06:24:08
+neither are up06:24:08
+inside pingrabbitdb script
+backup not hit   06:25:07
+neither are up06:25:07
+inside pingrabbitdb script
+backup not hit   06:26:07
+neither are up06:26:07
+inside pingrabbitdb script
+backup not hit   06:27:07
+neither are up06:27:07
+inside pingrabbitdb script
+backup not hit   06:28:07
+neither are up06:28:07
+inside pingrabbitdb script
+backup not hit   06:29:07
+neither are up06:29:07
+inside pingrabbitdb script
+backup not hit   06:30:08
+neither are up06:30:08
+inside pingrabbitdb script
+backup not hit   06:31:07
+neither are up06:31:07
+inside pingrabbitdb script
+backup not hit   06:32:07
+neither are up06:32:07
+inside pingrabbitdb script
+backup not hit   06:33:07
+neither are up06:33:07
+inside pingrabbitdb script
+backup not hit   06:34:07
+neither are up06:34:07
+inside pingrabbitdb script
+backup not hit   06:35:07
+neither are up06:35:07
+inside pingrabbitdb script
+Main hit   14:56:01
+inside pingrabbitdb script
+Main hit   14:57:01
+inside pingrabbitdb script
+Main hit   14:58:01
+inside pingrabbitdb script
+inside pingrabbitdb script
+backup not hit   15:00:07
+neither are up15:00:07
+backup not hit   15:00:10
+neither are up15:00:10
+inside pingrabbitdb script
+backup hit   15:01:04
+main down, switching to backup15:01:04
+inside pingrabbitdb script
+backup hit   15:02:05
+backup hit and switched to    15:02:05
+inside pingrabbitdb script
+backup hit   15:03:04
+backup hit and switched to    15:03:04
+inside pingrabbitdb script
+Main hit   15:04:01
+inside pingrabbitdb script
+backup hit   15:06:19
+main down, switching to backup15:06:19
+inside pingrabbitdb script
+backup hit   15:08:04
+main down, switching to backup15:08:04
+inside pingrabbitdb script
+backup hit   15:10:05
+main down, switching to backup15:10:05
+inside pingrabbitdb script
+backup hit   15:12:04
+main down, switching to backup15:12:04
+inside pingrabbitdb script
+Main hit   15:14:01
+inside pingrabbitdb script
+Main hit   15:16:01
+inside pingrabbitdb script
+backup hit   15:18:20
+main down, switching to backup15:18:20
+inside pingrabbitdb script
+                                                             inside pingrabbitdb script
+Main hit   15:22:02
+inside pingrabbitdb script
+Main hit   15:24:01
+inside pingrabbitdb script
+Main hit   15:26:01
+inside pingrabbitdb script
+Main hit   15:28:01
+inside pingrabbitdb script
+Main hit   15:30:01
+inside pingrabbitdb script
+Main hit   15:32:01
+inside pingrabbitdb script
+Main hit   15:34:01
+inside pingrabbitdb script
+Main hit   15:36:01
+inside pingrabbitdb script
+Main hit   15:38:01
+inside pingrabbitdb script
+Main hit   15:40:01
+inside pingrabbitdb script
+Main hit   15:42:01
+inside pingrabbitdb script
+Main hit   15:44:01
+inside pingrabbitdb script
+Main hit   15:46:02
+inside pingrabbitdb script
+Main hit   15:48:01
+inside pingrabbitdb script
+Main hit   15:50:01
+inside pingrabbitdb script
+Main hit   15:52:01
+inside pingrabbitdb script
+Main hit   15:54:01
+inside pingrabbitdb script
+backup hit   15:56:19
+main down, switching to backup15:56:19
+inside pingrabbitdb script
+backup hit   15:58:04
+main down, switching to backup15:58:04
+inside pingrabbitdb script
+backup not hit   16:00:23
+neither are up16:00:23
+inside pingrabbitdb script
+backup not hit   16:02:07
+neither are up16:02:07
+inside pingrabbitdb script
+backup not hit   16:04:07
+neither are up16:04:07
+inside pingrabbitdb script
+backup not hit   16:06:07
+neither are up16:06:07
+inside pingrabbitdb script
+backup not hit   16:08:07
+neither are up16:08:07
+inside pingrabbitdb script
+backup not hit   16:10:08
+neither are up16:10:08
+inside pingrabbitdb script
+backup not hit   16:12:07
+neither are up16:12:07
+inside pingrabbitdb script
+backup not hit   16:14:07
+neither are up16:14:07
+inside pingrabbitdb script
+backup not hit   16:16:07
+neither are up16:16:07
+inside pingrabbitdb script
+backup not hit   16:18:08
+neither are up16:18:08
+inside pingrabbitdb script
+backup not hit   16:20:07
+neither are up16:20:07
+inside pingrabbitdb script
+backup not hit   16:22:07
+neither are up16:22:07
+inside pingrabbitdb script
+backup not hit   16:24:07
+neither are up16:24:07
+inside pingrabbitdb script
+backup not hit   16:26:08
+neither are up16:26:08
+inside pingrabbitdb script
+backup not hit   16:28:07
+neither are up16:28:07
+inside pingrabbitdb script
+backup not hit   16:30:07
+neither are up16:30:07
+inside pingrabbitdb script
+backup not hit   16:32:07
+neither are up16:32:07
+inside pingrabbitdb script
+backup not hit   16:34:07
+neither are up16:34:07
+inside pingrabbitdb script
+backup not hit   16:36:07
+neither are up16:36:07
+inside pingrabbitdb script
+backup not hit   16:38:07
+neither are up16:38:07
+inside pingrabbitdb script
+backup not hit   16:40:07
+neither are up16:40:07
+inside pingrabbitdb script
+backup not hit   16:42:07
+neither are up16:42:07
+inside pingrabbitdb script
+backup not hit   16:44:07
+neither are up16:44:07
+inside pingrabbitdb script
+backup not hit   16:46:08
+neither are up16:46:08
+inside pingrabbitdb script
+backup not hit   16:48:07
+neither are up16:48:07
+inside pingrabbitdb script
+backup not hit   16:50:07
+neither are up16:50:07
+inside pingrabbitdb script
+backup not hit   16:52:07
+neither are up16:52:07
+inside pingrabbitdb script
+backup not hit   16:54:07
+neither are up16:54:07
+inside pingrabbitdb script
+backup not hit   16:56:08
+neither are up16:56:08
+inside pingrabbitdb script
+backup hit   16:58:04
+main down, switching to backup16:58:04
+inside pingrabbitdb script
+backup hit   17:00:04
+main down, switching to backup17:00:04
+inside pingrabbitdb script
+backup hit   17:02:04
+main down, switching to backup17:02:04
+inside pingrabbitdb script
+backup hit   17:04:04
+main down, switching to backup17:04:04
+inside pingrabbitdb script
+Main hit   17:06:01
+inside pingrabbitdb script
+Main hit   17:08:01
+inside pingrabbitdb script
+Main hit   17:10:01
+inside pingrabbitdb script
+Main hit   17:12:01
+inside pingrabbitdb script
+Main hit   17:14:01
+inside pingrabbitdb script
+Main hit   17:16:01
+inside pingrabbitdb script
+Main hit   17:18:01
+inside pingrabbitdb script
+Main hit   17:20:01
+inside pingrabbitdb script
+Main hit   17:22:08
+inside pingrabbitdb script
+Main hit   17:24:01
+inside pingrabbitdb script
+inside pingrabbitdb script
+inside pingrabbitdb script
+inside pingrabbitdb script
+Main hit   18:05:46
+inside pingrabbitdb script
+inside pingrabbitdb script
+Main hit   18:20:01
+inside pingrabbitdb script
+Main hit   18:30:01
+inside pingrabbitdb script
+Main hit   18:40:01
+inside pingrabbitdb script
+Main hit   18:50:01
+inside pingrabbitdb script
+Main hit   19:00:01
+inside pingrabbitdb script
+Main hit   04:30:01
+inside pingrabbitdb script
+Main hit   04:40:01
+inside pingrabbitdb script
+Main hit   04:50:01

@@ -3,39 +3,32 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-<<<<<<< HEAD
-require('/home/sam/git/webserverVM/rabbitMQMerged/ServerClient.php');
-
-
-=======
-require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
->>>>>>> a5959c18fac39b1343a3ef3617f6b51af23868ca
-
-function updateLog($errmsg) {
-	# with this a+ opening mode we APPEND to this existing logbook
-	$newentry = fopen("/home/matt/logbook.txt", "a+");
-	fwrite($newentry, $errmsg ."/n");
-	fclose($newentry);
-}
+require('/home/matt00/git/WebFrontEnd/ServerClient.php');
 
 # Var for what post returned
 $p = $_POST;
 
 if (isset($p['uname'])) {
 	
-	$un = $p['uname'];
-	$pw = $p['pword'];
-
-	$lucky = dologin($un, $pw);
-
-	$_SESSION['pubkey'] = $lucky['pubkey'];
-	$_SESSION['privkey'] = $lucky['privkey'];
+	$lucky = dologin($p['uname'], $p['pword']);
 	
-	$header = $lucky['msg'];
+	$retarr = $lucky['msg'];
+	$uid = $retarr['uid'];
+
+	if (!$uid){
+		
+        	$_SESSION['msg'] = $lucky['msg'];
+		header('Location: http://127.0.0.1/errpage.php');
+			}
+
+	else {
+	
+		$_SESSION['uid'] = $uid;
+		header('Location: http://127.0.0.1/action.php');
+      	
+	}
 }
 
-else
- updateLog("username does not exist"); 
 
 ?>
 
@@ -74,7 +67,7 @@ else
 
 	<div class="container-fluid p-3 m-6 border">
 		<form method="post" action="action.php">
-		<button type="submit"> Perform Account Transactions </button>
+		<button type="submit"> Move to Action Page </button>
 		</form>
 	</div>
 </body>

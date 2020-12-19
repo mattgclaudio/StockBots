@@ -3,29 +3,25 @@ session_start();
 #This line has to be run before anything else for the session vars to work
 
 # this line will have to be changed based on where the RabbitCLIENT file is in # relation to the login.php
-require('/home/matt00/Downloads/git/rabbitMQMerged/ServerClient.php');
+require('/home/matt00/git/WebFrontEnd/ServerClient.php');
 
-
-
-# Var for what post returned
 $post = $_POST;
-
-$pk = $_SESSION['pubkey'];
-$prk = $_SESSION['privkey'];
-
 
 $header = "Welcome to Your Action Page";
 
 if (isset($post['chkcash'])) {
-	$ret = getcash($pk, $prk);
+	$ret = getcash($_SESSION['uid']);
 	$cash = $ret['message'];
+
+	$transferPhoto = $ret['pic'];
+	
 	$header = "Cash Balance";
 }
 
 
 if (isset($post['pos'])) {
 	
-	$retstr = getpos($pk, $prk);
+	$retstr = getpos($_SESSION['uid']);
 	
 	$posarr = preg_split("/,/", $retstr['message']);
 
@@ -38,21 +34,11 @@ if (isset($post['order'])) {
 	$s = $post['sym'];
 	$n = $post['num'];
 
-	$ret = putorder($pk, $prk, $s, $n);
+	$ret = putorder($_SESSION['uid'], $s, $n);
 
 	$header = $ret['message'];
 }
 
-
-
-
-if (isset($post['bot'])) {
-
-        $msg = callBot($pk, $prk, $post['botsym']);
-	$picurl = "192.168.1.179/photoHost/test_plot.png";
-	$header = $msg['message'];
-
-}
 
 
 ?>
@@ -79,12 +65,28 @@ if (isset($post['bot'])) {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
-<title> YahooFin Portal </title>
+<title> Alpaca API Portal </title>
 
 </head>
 
 
 <body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  
+	<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">Alpaca Trading API Portal</a>
+    		</div>
+    
+		<ul class="nav navbar-nav">
+     			 <li class="active"><a href="index.html">Home</a></li>
+      			<li><a href="bots.php">Bot Page</a></li>
+      			<li><a href="watch.php">Strike Price Page</a></li>
+      			<li><a href="#">Page 3</a></li>
+    		</ul>
+	</div>
+</nav>
 
 
 	<div class="jumbotron-fluid p-3 my-3 bg-dark text-white"> 
@@ -93,8 +95,13 @@ if (isset($post['bot'])) {
 
 
 
-	 <div class="container-fluid p-3 my-2 border">
+ <div class="container-fluid p-3 my-2 border">
 		
+
+	<div class="row">
+
+                <div class="col-md-4 p-md-3">
+
 		<label>Get Cash Balance </label>
 		
 		 <input type="text" size="100"placeholder="Your Cash Balance will appear here" value="<?php if (!empty($cash)) { echo $cash; } ?>">
@@ -106,10 +113,15 @@ if (isset($post['bot'])) {
 		<button type="submit"> Submit </button>
 		
 		</form>
-		
+
+		</div>
 	</div>
 
-	<div class="container-fluid p-3 my-2 border">
+
+	<div class="row">
+
+                <div class="col-md-4">
+
 		<label> See Current Positions </label>
 		
 		<input type="text" id="pos" placeholder="Your active positions will appear here." size="100" value="<?php if (!empty($posarr)) { foreach ($posarr as $k) {echo $k;} } ?>">
@@ -122,9 +134,13 @@ if (isset($post['bot'])) {
 		
 		</form>
 		
-	 </div>
+		 </div>
 
-	<div class="container-fluid p-3 my-2 border">
+	</div>
+
+	<div class="row">
+
+                <div class="col-md-4">
 
 		<label>  Enter stock symbol all caps, quantity </label>
 
@@ -139,28 +155,13 @@ if (isset($post['bot'])) {
 		<button type="submit"> Submit </button>
 		
 		</form>
+	
+		</div>
 
 	 </div>
 
-	<div class="container-fluid p-3 my-2 border">
-		<label>  See predictive graph for stock prices.</label>
-		
-		<form method="post" action="">
-		
-		<input type="hidden" name="bot">
-		
-		<input type="text" name="botsym" placeholder="Stock Symbol">
-		
-		<button type="submit"> Bot Graph </button> 
-		
-		</form>
 
-
-	</div>
-
-	<img src="<?php echo $picurl; ?>" class="float-left">
-
-
+</div> <!--end full container-->
 
 </body>
 
