@@ -1,0 +1,9 @@
+● userDB.service - Rabbit Listener for User database authentication from web front end.
+   Loaded: loaded (/lib/systemd/system/userDB.service; static; vendor preset: enabled)
+   Active: activating (auto-restart) (Result: exit-code) since Sun 2020-12-13 01:16:15 EST; 12s ago
+  Process: 6172 ExecStop=/bin/kill -s QUIT $MAINPID (code=exited, status=0/SUCCESS)
+  Process: 8711 ExecStart=/home/matt/git/UserDatabase/dbserver.php (code=exited, status=255)
+ Main PID: 8711 (code=exited, status=255)
+
+Dec 13 01:16:15 sysIntBox systemd[1]: userDB.service: Main process exited, code=exited, status=255/n/a
+Dec 13 01:16:15 sysIntBox systemd[1]: userDB.service: Failed with result 'exit-code'.

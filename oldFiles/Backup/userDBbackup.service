@@ -1,0 +1,12 @@
+[Unit]
+Background process automating userDB updates to the replica. 
+
+[Service]
+ExecStart=/home/matt/git/UserDatabase/Backup/pingdb.php
+ExecReload=/home/matt/git/UserDatabase/Backup/pingdb.php reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+Restart=on-failure
+RestartSec=15
+PIDFile=/run/userDBbackup.pid
+
+
