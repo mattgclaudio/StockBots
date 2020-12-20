@@ -6,7 +6,7 @@ get_host_info.inc,
 path.inc, 
 host.ini
 and local.ini 
-which were provided to me with some prebuilt functions for creating RabbitMQ servers and clients. 
+which were provided to me with some prebuilt functions for creating RabbitMQ servers and clients. The code in the IT490 directories is not mine, I am working on deleting all of those now. Dec 19th 2020
 
 
 The code contained here was to be distributed among 3 VM's, a Web Front End, a DMZ to connect to the Alpaca Trading API, and a box to serve as the RabbitMQ broker as well as a database for users logging in through the web front end. All VMs used for creation of this project were running Ubuntu 18.04.
