@@ -1,5 +1,14 @@
 # StockBots Project
 
+All the code contained within this repo is 100% my own creation with the exception of the files:
+rabbitMQlib.inc, 
+get_host_info.inc, 
+path.inc, 
+host.ini
+and local.ini 
+which were provided to me with some prebuilt functions for creating RabbitMQ servers and clients. 
+
+
 The code contained here was to be distributed among 3 VM's, a Web Front End, a DMZ to connect to the Alpaca Trading API, and a box to serve as the RabbitMQ broker as well as a database for users logging in through the web front end. All VMs used for creation of this project were running Ubuntu 18.04.
 
 ### START -> webVM  
@@ -16,10 +25,3 @@ The code contained here was to be distributed among 3 VM's, a Web Front End, a D
 ### User sends requests through broker to DMZ -->
 After authenticating, the user's UID is stored as a PHP session variable within the webpages and passed to accessory functions when they perform an action on the site.  
   
-All the code contained within this repo is 100% my own creation with the exception of the files:
-rabbitMQlib.inc, 
-get_host_info.inc, 
-path.inc, 
-host.ini
-and local.ini 
-which were provided to me with some prebuilt functions for creating RabbitMQ servers and clients. 
