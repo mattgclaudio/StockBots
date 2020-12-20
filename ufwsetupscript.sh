@@ -4,6 +4,8 @@
 
 # make sure /etc/default/ufw : IPV6=yes
 
+# script to configure the testing VM's to accept connections from local machines as well as machines connected through our school's VPN for 
+# working on the project with multiple individuals. 
 
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
