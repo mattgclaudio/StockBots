@@ -1,5 +1,3 @@
-#!/home/matt/git/rabbitMQMerged/venv/bin/python3
-
 import configparser
 import sys
 
