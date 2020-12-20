@@ -25,3 +25,8 @@ The replaceINI.sh, putbackINI.sh, and monitor.php are run by the user cron to pi
 amend the webpages/ini file flags when the main goes down/comes back up.
 
 webpages are provided here for the sake of packaging, but naturally they live in /var/www/html.
+
+
+insert apache2/ports.conf into /etc/apache2, defaultssl into sites-available, enable with a2dissite , and a2ensite defaultssl && a2enmod ssl if not already enabled.
+uses the automatic cert generation with the spt certbot package 
+/etc/hosts must also have a top line with 127.0.0.1 www.stocktracker.com
