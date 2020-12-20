@@ -11,9 +11,9 @@
 **Database/Rabbit Broker Failover:**
 
 The replaceINI.sh, putbackINI.sh, and monitor.php are run by the user cron to ping the main and failover 
-rabbitdb servers and amend the webpages/ini file flags when the main goes down/comes back up.
+rabbitdb servers and amend the webpages/ini file flags when the main goes down/comes back up. In the event the main broker/DB box goes down, monitor will log the failure then run replaceINI.sh to rewrite the webpages to be using the FailoverServerClient.php file when making requests. Need to add a script which makes the active webpage run Header("Refresh: 0");
 
 **For SSL config:** 
    Insert apache2/ports.conf into /etc/apache2, defaultssl into sites-available, enable with a2dissite , and a2ensite defaultssl && a2enmod ssl if not already enabled.
-uses the automatic cert generation with the spt certbot package 
+uses the automatic cert generation with the apt certbot package 
 /etc/hosts must also have a top line with 127.0.0.1 www.stocktracker.com
