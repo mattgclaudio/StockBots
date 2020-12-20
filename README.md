@@ -1,5 +1,5 @@
 # Deployment Branch
-# Holds code for Deployment VM & functions for the tiers to push and pull packages.
+### Holds code for Deployment VM & functions for the tiers to push and pull packages.
 
 servdep.php is what runs on the Deployment VM and maintains the packages database, sends out version info in response to requests, and holds packages for download.
 
