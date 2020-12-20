@@ -12,3 +12,10 @@ START -> webVM
   UID sent back to WebFrontEnd --> If a proper UID is returned, the user is moved to the check.php page where they can check their balance/open positions or move to any of the other pages within the system. Requests from any of these pages correspond to PHP functions kept in the webVM's ServerClient.php file. For most of them, it involves packaging the UID as well as a code for the action being performed which corresponds to a switch function case on the DMZ, which has a number of accessory functions for handling each unique user request. 
   
   
+All the code contained within this repo is 100% my own creation with the exception of the files:
+rabbitMQlib.inc, 
+get_host_info.inc, 
+path.inc, 
+host.ini
+and local.ini 
+which were provided to me with some prebuilt functions for creating RabbitMQ servers and clients. 
