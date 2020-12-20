@@ -1,7 +1,8 @@
+# Web Front End Code
 
 12/19/2020
 
-## Webpage config:
+** Webpage config: **
 
   All webpages held in FINALwebpages, live in /var/www/html/stockTracker.
   ServerClient.php holds all the accessory php functions which the web pages use to package their requests out through the rabbit exchange server.
