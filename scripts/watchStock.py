@@ -23,7 +23,7 @@ def get_number(userid):
 # takes uid to look up phone number, alert containing strike message
 def send_alert(alert, uuid):
     # this requires you set these two os env vars with
-    # export twilio...="asd34234" in ~/.bashrc
+    # export twilio...="XXXXXXX" in ~/.bashrc
     account_sid = os.environ['TWILIO_ACCOUNT_SID']
     auth_token = os.environ['TWILIO_AUTH_TOKEN']
     client = Client(account_sid, auth_token)
