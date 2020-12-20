@@ -1,4 +1,4 @@
-# rStockBots Project
+# StockBots Project
 
 The code contained here was to be distributed among 3 VM's, a Web Front End, a DMZ to connect to the Alpaca Trading API, and a box to serve as the RabbitMQ broker as well as a database for users logging in through the web front end. 
 
