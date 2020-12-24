@@ -113,7 +113,7 @@ def predict_price(s_date, e_date, ticker: str):
     plt.savefig("tempGraph2.png")
 
 
-print(predict_price("2010-1-1", date.today(), sys.argv[1]))
+print(predict_price("2010-1-1", date.today(), sys.argv[1].upper()))
 
 
 

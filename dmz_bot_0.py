@@ -1,4 +1,4 @@
-#!/home/matt/git/rabbitMQMerged/venv/bin/python3
+#!/home/integra/botenv/bin/python3
 
 from yahoo_fin.stock_info import *
 import pandas as pd
@@ -117,7 +117,7 @@ def predict_price(s_date, e_date, ticker: str):
     plt.savefig("tempGraph0.png")
 
 
-print(predict_price("2012-1-1", date.today(), sys.argv[1]))
+print(predict_price("2012-1-1", date.today(), sys.argv[1].upper()))
 
 
 
