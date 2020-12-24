@@ -59,9 +59,10 @@ def predict_price(s_date, e_date, ticker: str):
     # LSTM model requires "3D tensor with  shape [batch, timestep, features] " docs.
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
-
-    #  close_model = Sequential()
-    #  close_model.add(LSTM(units=50, return_sequences=True))
+    
+    # model already created and saved in this directory, this code is for building a new model if needed. 
+    # close_model = Sequential()
+    # close_model.add(LSTM(units=50, return_sequences=True))
     # close_model.add(LSTM(units=50, return_sequences=False))
     # close_model.add(Dense(units=25))
     # close_model.add(Dense(units=1))
