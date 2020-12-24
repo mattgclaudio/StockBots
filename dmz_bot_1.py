@@ -1,4 +1,4 @@
-#!/home/matt/git/rabbitMQMerged/venv/bin/python3
+#!/home/integra/botenv/bin/python3
 
 from yahoo_fin.stock_info import *
 import pandas as pd
