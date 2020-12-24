@@ -20,43 +20,36 @@ require_once('rabbitMQLib.inc');
 # intended recipient and then passing it's response back to the sender. 
 
 function dologin($a, $b) {
-	
 	$client = new rabbitMQClient("rabbit.ini","testServer");
-
-	$request = array();
-
-	$request['type'] = "login";
-	$request['username'] = $a;
-	$request['password'] = $b;
-
+	$request = [
+		"type" => "login",
+		"username" => $a,
+		"password" => $b,
+		];
 	return $client->send_request($request);
 }
 
 
 
 function getcash ($userid) {
-
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
-
-	$req = array();
-	$req['type'] = "dmz";
-	$req['uid'] = $userid;
-	$req['action'] = "cash";
-
+	$req = [
+		"type" => "dmz",
+		"uid" => $userid,
+		"action" => "cash",
+		];
 	return $client->send_request($req);
 }
 
 
 
 function getpos($userid) {
-
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-        $req['type'] = "dmz";
-        $req['uid'] = $userid;
-        $req['action'] = "pos";
-
+        $req = [
+		"type" => "dmz",
+		"uid" => $userid,
+		"action" => "pos",
+		];
         return $client->send_request($req);
 
 }
@@ -66,42 +59,45 @@ function getpos($userid) {
 function putorder($userid, $symbol, $number) {
 
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-        $req['type'] = "dmz";
-        $req['uid'] = $userid;
-	$req['sym'] = $symbol;
-	$req['num'] = $number;
-        $req['action'] = "order";
-
+	# just in case the user entered a lowercase ticker symbol
+	$symbol = strtoupper($symbol);
+        $req = [
+		"type" => "dmz",
+		"uid" => $userid,
+		"sym" => $symbol,
+		"num" => $number,
+		"action" => "order",
+		];
+	
         return $client->send_request($req);
 }
 
 
 
 function callBot0($uid, $symbol) {
-
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-	$req['type'] = "dmz";
-	$req['uid'] = $uid;
-	$req['action'] = "bot0";
-	$req['botsym'] = $symbol;
-
+	$symbol = strtoupper($symbol);
+        $req = [
+		"type" => "dmz",
+		"uid" => $uid,
+		"action" => "bot0",
+		"botsym" => $symbol,
+		];
+	
         return $client->send_request($req);
 }
 
 function callBot1($uid, $symbol) {
 
         $client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-        $req['type'] = "dmz";
-        $req['uid'] = $uid;
-        $req['action'] = "bot1";
-        $req['botsym'] = $symbol;
-
+	$symbol = strtoupper($symbol);
+	$req = [
+		"type" => "dmz",
+		"uid" => $uid,
+		"action" => "bot1",
+		"botsym" => $symbol,
+		];
+   
         return $client->send_request($req);
 }
 
@@ -109,13 +105,14 @@ function callBot1($uid, $symbol) {
 function callBot2($uid, $symbol) {
 
         $client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-        $req['type'] = "dmz";
-        $req['uid'] = $uid;
-        $req['action'] = "bot2";
-        $req['botsym'] = $symbol;
-
+	$symbol = strtoupper($symbol);
+	$req = [
+		"type" => "dmz",
+		"uid" => $uid,
+		"action" => "bot2",
+		"botsym" => $symbol,
+		];
+	
         return $client->send_request($req);
 }
 
@@ -123,13 +120,15 @@ function callBot2($uid, $symbol) {
 function newWatchedStock($uid, $new_stock, $new_price) {
 	
 	$client = new rabbitMQClient("rabbit.ini", "testServer");
-
-        $req = array();
-        $req['type'] = "dmz";
-        $req['uid'] = $uid;
-	$req['action'] = "add";
-	$req['symbol'] = $new_stock;
-	$req['price'] = $new_price;
+`	$new_stock = strtoupper($new_stock);
+	
+        $req = [
+		"type" => "dmz",
+		"uid" => $uid,
+		"action" => "add",
+		"symbol" => $new_stock,
+		"price" => $new_price,
+		];
 
 	return $client->send_request($req);
 
