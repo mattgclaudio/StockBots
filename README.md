@@ -3,63 +3,51 @@ All the dmz box's files live here, namely dmzServer.php, the assorted scripts ke
 
 
 
-# Configuring a fresh VM to run this code.
-# Setting up the DMZ VM with tensorflow and friends
+### Configuring a fresh VM to run this code.
+### Setting up the DMZ VM with tensorflow and friends
 
-## Create a new VM, stock it with plenty of HDD space, at least 18 GB of RAM
-## and at least 8 cores for compiling TF from source. Can scale back afterwards.
+### Create a new VM, stock it with plenty of HDD space, at least 18 GB of RAM and at least 8 cores for compiling TF from source. Can scale back afterwards.
 
-## install python3 deps
+### install python3 deps
 sudo apt update
 sudo apt install python3-dev python3-pip python3-venv
 
-## create python venv
+### create python venv
 python3 -m venv --system-site-packages ./venv
 
-## upgrade pip, then we move to compiling from source. Regular TF pip 
-## package is fine for the host, but the FMA CPU flags don't show on the VM
-## boxes, not sure if this was the case earlier...
+### upgrade pip, then we move to compiling from source. Regular TF pip package is fine for the host, but the FMA CPU flag does not show on the VM boxes.
 pip install --upgrade pip
-
 
 # Building from source.
 
-## install tf pip deps
+### install tf pip deps
 pip install -U pip numpy wheel
 pip install -U keras_preprocessing --no-deps
 
-## install bazel for build
+### install bazel for build
 sudo apt update && sudo apt install bazel-3.1.0
 
-## clone tf repo
+### clone tf repo
 git clone https://github.com/tensorflow/tensorflow.git
 
 cd tensorflow
 
-## while in venv
-## select no for OpenCL, ROCm, CUDA, TensorRT, Clang, default for optimization
-## flags, no for android builds. 
+### While in venv, during configure.py select no for OpenCL, ROCm,CUDA, TensorRT, Clang, default for optimization flags, no for android builds. 
 python3 configure.py
 
-## build the pip package with bazel, This will take a LOT of RAM
-## and run for over an hour, get a snack.
-## only for CPU support
+### Build the pip package with bazel, This will take a LOT of RAM and run for over an hour, get a snack. Only for CPU support
 bazel build //tensorflow/tools/pip_package:build_pip_package
 
-## build the wheel package
+### build the wheel package
 ./bazel-bin/tensorflow/tools/pip_package/build_pip_package --nightly_flag /tmp/tensorflow_pkg
 
-## install wheel package to pip
+### install wheel package to pip
 pip install /tmp/tensorflow_pkg/tensorflow-[version-tags].whl
 
-# now cd up and out of the tf git directory before testing with 
+### now cd up and out of the tf git directory before testing with 
 python -c "import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"
 
-# other python packages needed
-# twilio is for sending text messages when a stock hits the given price
-# yahoo-fin is for pulling historical stock data
-# configparser for reading the ini file
-# matplotlib for graphing
+### other python packages needed
 pip install twilio yahoo-fin alpaca-trade-api requests-html configparser matplotlib
 
 
