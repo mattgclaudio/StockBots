@@ -60,6 +60,8 @@ def predict_price(s_date, e_date, ticker: str):
 
     x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], 1))
 
+    # model already created and saved in this directory, this code is for building
+    # a new model if needed. 
     # close_model = Sequential()
     # close_model.add(LSTM(units=70, return_sequences=True))
     # close_model.add(LSTM(units=70, return_sequences=False))
