@@ -22,6 +22,7 @@ pip install --upgrade pip
 
 ### install tf pip deps
 pip install -U pip numpy wheel
+####### Separate commands
 pip install -U keras_preprocessing --no-deps
 
 ### install bazel for build
