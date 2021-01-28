@@ -3,8 +3,8 @@
 import alpaca_trade_api as tradeapi
 import sys
 
-# key = "PKOWHBTVHXBZXFDOY8YU"
-# sec = "sNoRCTp9cK6Y8k4jerXijbPeY15S3MkxcKE4sHGt"
+# key = "public key "
+# sec = "secret _ key"
 url = "https://paper-api.alpaca.markets"
 
 # Deliverable 1. Keep track of portfolio positions for user.
